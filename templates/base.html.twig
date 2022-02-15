@@ -150,7 +150,7 @@
                                                 <div class="account order-1 dropdown">
                                                     <a href="#" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
                                                         <div class="user-dp"><img src="{{ asset('images/dp.jpg') }}" alt=""></div>
-                                                        <span>Hi! John</span>
+                                                        <span>Hi! {{app.user.nom}}</span>
                                                         <i class="fas fa-sort-down"></i>
                                                     </a>
                                                     <div class="dropdown-menu account-dropdown dropdown-menu-right">
@@ -179,7 +179,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <nav class="navbar navbar-expand-lg navbar-light bg-dark1 justify-content-sm-start">
-                                    <a class="order-1 order-lg-0 ml-lg-0 ml-3 mr-auto" href="index.html"><img src="{{ asset ('images/logoF.svg') }}" alt="" style=""></a>
+                                    <a class="order-1 order-lg-0 ml-lg-0 ml-3 mr-auto"  href="{{ path('home')}}"><img src="{{ asset ('images/logoF.svg') }}" alt="" style=""></a>
                                     <button class="navbar-toggler align-self-start" type="button">
                                         <i class="fas fa-bars"></i>
                                     </button>
@@ -208,7 +208,7 @@
                                         </ul>
                                         <a href="#" class="search-link" role="button" data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></a>
                                         {% if app.user %}
-                                        <a href="post_a_job.html" class="add-post">Post a Job</a>
+                                        <a href="{{ path('projet_new')}}" class="add-post">Post a Job</a>
                                         {% endif %}
                                         {% block connexion %}
                                         {% if not app.user %}
