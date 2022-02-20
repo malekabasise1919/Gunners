@@ -124,6 +124,11 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $bids;
+
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
@@ -481,5 +486,17 @@ class User implements UserInterface
         return ['Role_User'];
     }
     public function getUsername(){}
+
+    public function getBids(): ?int
+    {
+        return $this->bids;
+    }
+
+    public function setBids(?int $bids): self
+    {
+        $this->bids = $bids;
+
+        return $this;
+    }
     
 }

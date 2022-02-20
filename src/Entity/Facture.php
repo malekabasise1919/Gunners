@@ -12,35 +12,45 @@ class Facture
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
     /**
      * @ORM\OneToOne(targetEntity=contrat::class, inversedBy="facture", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $contrat;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Transaction::class, mappedBy="facture", cascade={"persist", "remove"})
+     */
+    private $transaction;
 
     public function getId(): ?int
     {
         return $this->id;
     }
+    public function setId(int $id): self
+    {
+        $this->id = $id;
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = new \Datetime();
 
         return $this;
     }
@@ -53,6 +63,28 @@ class Facture
     public function setContrat(contrat $contrat): self
     {
         $this->contrat = $contrat;
+
+        return $this;
+    }
+
+    public function getTransaction(): ?Transaction
+    {
+        return $this->transaction;
+    }
+
+    public function setTransaction(?Transaction $transaction): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($transaction === null && $this->transaction !== null) {
+            $this->transaction->setFacture(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($transaction !== null && $transaction->getFacture() !== $this) {
+            $transaction->setFacture($this);
+        }
+
+        $this->transaction = $transaction;
 
         return $this;
     }

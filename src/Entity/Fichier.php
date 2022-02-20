@@ -33,12 +33,12 @@ class Fichier
         return $this->id;
     }
 
-    public function getLink(): ?string
+    public function getLink()
     {
         return $this->link;
     }
 
-    public function setLink(string $link): self
+    public function setLink($link): self
     {
         $this->link = $link;
 

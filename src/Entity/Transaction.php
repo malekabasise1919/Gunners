@@ -28,15 +28,25 @@ class Transaction
     private $statut;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="transactions")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="transactions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $prix;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Facture::class, inversedBy="transaction", cascade={"persist", "remove"})
+     */
+    private $facture;
 
     public function getId(): ?int
     {
@@ -67,14 +77,14 @@ class Transaction
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = new \Datetime();
 
         return $this;
     }
@@ -87,6 +97,30 @@ class Transaction
     public function setUser(?user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getFacture(): ?Facture
+    {
+        return $this->facture;
+    }
+
+    public function setFacture(?Facture $facture): self
+    {
+        $this->facture = $facture;
 
         return $this;
     }

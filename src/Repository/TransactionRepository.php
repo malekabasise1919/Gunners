@@ -19,6 +19,17 @@ class TransactionRepository extends ServiceEntityRepository
         parent::__construct($registry, Transaction::class);
     }
 
+
+    public function LastFiveTrans($user) 
+{ 
+    $qb = $this->createQueryBuilder('t')
+    ->where('t.user = :user')
+    ->setParameter('user',$user)
+    ->orderBy('t.created_at', 'DESC')->setMaxResults(5);
+
+    return $qb->getQuery()->getResult(); 
+}
+
     // /**
     //  * @return Transaction[] Returns an array of Transaction objects
     //  */

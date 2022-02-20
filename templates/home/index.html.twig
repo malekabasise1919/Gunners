@@ -4,6 +4,24 @@
 
 {% block content %}
 	<div class="banner-slider">
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+
+<div class="alert alert-success">
+<ul>
+   <li style="text-align:center;"> {{ flashMessage }}<li>
+   </li>
+</div>
+
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('notice_project') %}
+
+<div class="alert alert-success">
+<ul>
+   <li style="text-align:center;"> {{ flashMessage }}<li>
+   </li>
+</div>
+
+{% endfor %}	
 				<div class="owl-carousel bnnr-owl owl-theme">
 					<div class="item">
 						<div class="featured-cities">

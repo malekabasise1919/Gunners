@@ -21,7 +21,15 @@
 							<div class="form-group">
 								<label class="label15" required min="8">Password*</label>
 								<input  name="_password" type="password" class="job-input" placeholder="Enter Password">
+								{% if error %}
+								<br/><br/>
+								<div class="alert alert-danger" role="alert">
+  Please Verify your Password
+</div>
 							</div>
+							{% endif %}
+							</div>
+							
 							<button class="lr_btn" type="submit">Sign in Now</button>
 							</form>
 							<div class="done145">
@@ -32,7 +40,7 @@
 								<div class="done147">
 									<a href="forgot_password.html">Forgot Password?</a>
 								</div>
-							</div>
+								
 						</div>
 					</div>
 				</div>

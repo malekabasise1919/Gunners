@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payment Page{% endblock %}
+
+{% block content %}
+
+<div class="title-bar">			
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<ol class="title-bar-text">
+							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Payment</li>
+						</ol>
+					</div>		
+				</div>		
+			</div>		
+		</div>
+		
+		<!-- Title Start -->
+		<!-- Body Start -->	
+		<main class="browse-section">				
+			<div class="container">
+			
+			{% if transactions!= null %}
+			<div class="row justify-content-md-center">					
+					<div class="col-md-9">
+						<div class="main-heading">
+							<h2>Last 5 Transactions</h2>
+							<div class="line-shape1">
+								<img src="images/line.svg" alt="">
+							</div>
+						</div>
+						<div class="statement_table checkout_dt">
+							<div class="statement_body">
+								<div class="table-responsive-md">
+									<table class="table table-striped">
+									<thead>
+										<tr>
+										  
+										  <th scope="col">Type</th>
+										  <th scope="col">Methode of payment</th>
+										  <th scope="col">Total Amount</th>
+										  <th scope="col"> Date</th>
+										  <th scope="col"> Facture</th>
+										</tr>
+										</thead>
+										<tbody>
+										{% for t in transactions %}
+											<tr>
+												<th scope="row">
+													<div class="user_dt_trans">
+														<p>{{ t.type}}</p>
+													</div>
+												</th>
+												<td>
+													<div class="user_dt_trans">														
+														<p>{{t.statut}}</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">
+														<p>{{ t.prix }}TND</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">														
+														<p>{{t.getCreatedAt() | date }}</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">	
+													{% if t.Facture.id %}													
+														<a href="{{path('facture',{'id': t.Facture.id})}}">{{t.Facture.id}}</a>
+													{% endif %}
+													</div>
+												</td>
+											</tr>	
+											{% endfor %}																			
+										</tbody>
+									</table>														
+								</div>
+							</div>
+						</div>
+					</div>																																										
+				</div>
+				{% endif %}
+				<div class="row chk_pymnt">					
+					<div class="col-md-12">
+						<div class="main-heading">
+							<h2>Payment Method</h2>
+							<div class="line-shape1">
+								<img src="{{ asset ('images/line.svg')}}" alt="">
+							</div>
+						</div>				
+					</div>
+					<div class="col-md-6">
+						<div class="view_chart">
+							<div class="view_chart_header">
+								<div class="ui radio checkbox mt-1">
+									<input type="radio" name="example1" checked="">
+									<label class="chk_method" style="color:#242424 !important;">Credit or Debit Cards</label>
+								</div>
+								<div class="cards_right">
+									<img src="{{ asset ('images/cards.png')}}" alt="">
+								</div>
+							</div>
+                            {{ form_start(form)}}
+							<div class="pymt_mthd_body">
+								<div class="form-group">
+									<label class="label15">Card Number*</label>
+									
+                                    {{ form_widget(form.CardNumber,{'attr':{'placeholder': 'Enter Card Number' ,'class': 'job-input', 'id':'cardnumber' ,'pattern':'.{12}' , 'title' :"Field must be 12 numbers" }})}}
+									<p class="shippingError error" style="display:none; color:red;" id="cardnumber_error">* Required field</p>
+                                    
+								</div>
+								<div class="form-group">
+									<label class="label15">Full Name*</label>
+								
+                                    {{ form_widget(form.Name,{'attr':{ 'placeholder': 'Enter Full Name' ,'class': 'job-input' , 'id':'name' }})}}
+									<p class="shippingError error" style="display:none; color:red;" id="name_error">* Required field</p>
+								</div>
+								<div class="fdsf452">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="label15">Expiring*</label>
+												
+                                               <input id="date" type="month" class="job-input datepicker-here" data-language="en"  placeholder="Expiring" min={{date}} required>
+                                                <p class="shippingError error" style="display:none; color:red;" id="date_error">* Required field</p>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="label15">Cvv*</label>
+												
+                                                {{ form_widget(form.Cvv,{'attr':{ 'placeholder': 'Enter Cvv' ,'class': 'job-input' , 'id':'cvv' , 'pattern':'.{3}' , 'title' :"Field must be 3 numbers" }})}}
+												<p class="shippingError error" style="display:none; color:red;" id="cvv_error">* Required field</p>
+											</div>
+										</div>																		
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			
+					<div class="col-md-12">
+						<div class="ui checkbox apply_check check_out">
+							<input type="checkbox" tabindex="0" class="hidden">
+							<label style="color:#242424 !important;">I agree to the Terms and Conditions and the Automatic Renewal Terms</label>
+						</div>
+						<button class="post_jp_btn" type="submit" onclick="formHasError()">PROCEED PAYMENT</button>
+						
+                        {{ form_end(form)}}
+					</div>					
+				</div>	
+			</div>					
+		</main>
+        
+{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('js/payment.js') }}" ></script>
+
+            
+
+{% endblock %}

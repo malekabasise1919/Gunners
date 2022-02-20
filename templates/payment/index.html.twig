@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Our Offres{% endblock %}
+
+{% block content %}
+
+<div class="title-bar">		
+	
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<ol class="title-bar-text">
+							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Pricing Plans</li>
+						</ol>
+					</div>		
+				</div>		
+			</div>		
+		</div>
+		<!-- Title Start -->
+		<!-- Body Start -->	
+		<main class="browse-section">				
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">						
+						<div class="main-heading">
+							<h2>Pricing Plans</h2>
+							<div class="line-shape1">
+								<img src="images/line.svg" alt="">
+							</div>
+						</div>
+						<div class="account_tabs all_plans">
+							<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" href="#monthly_tab" id="monthly-tab" data-toggle="tab">Monthly Pricing Plans</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#yearly_tab" id="yearly-tab" data-toggle="tab">Yearly Pricing Plans</a>
+								</li>							
+							</ul>
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="monthly_tab" role="tabpanel">
+									<div class="plans150">
+										<div class="row">
+											<div class="col-lg-4 col-md-4">
+												<div class="plan_item">
+													<div class="plan_icon">
+														<i class="far fa-dot-circle"></i>
+													</div>
+													<h4>BASIC PLANS</h4>
+													<div class="plan_price">
+														<span>30 TND</span><ins>Monthly</ins>
+													</div>
+													<ul class="plan_dt">
+														<li><p>100 Bids</p></li>
+														<li><p>30 days visibility</p></li>
+														<li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+													</ul>
+													<div class="plan_btn">
+														<a href="{{path('payment_offre', {'prix':'30'})}}">Purchase Now</a>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-4">
+												<div class="plan_item">
+													<div class="plan_icon">
+														<i class="far fa-moon"></i>
+													</div>
+													<h4>STANDARD PLANS</h4>
+													<div class="plan_price">
+														<span>60 TND</span><ins>Monthly</ins>
+													</div>
+													<ul class="plan_dt">
+														<li><p>200 Bids</p></li>
+														<li><p>30 days visibility</p></li>
+														<li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+													</ul>
+													<div class="plan_btn">
+														<a href="{{path('payment_offre', {'prix':'60'})}}">Purchase Now</a>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-4">
+												<div class="plan_item">
+													<div class="plan_icon">
+														<i class="far fa-gem"></i>
+													</div>
+													<h4>PROFESSNIONAL PLANS</h4>
+													<div class="plan_price">
+														<span>100 TND</span><ins>Monthly</ins>
+													</div>
+													<ul class="plan_dt">
+														<li><p>350 Bids</p></li>
+														<li><p>30 days visibility</p></li>
+														<li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+													</ul>
+													<div class="plan_btn">
+														<a href="{{path('payment_offre', {'prix':'100'})}}">Purchase Now</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade show" id="yearly_tab" role="tabpanel">
+									<div class="plans150">
+										<div class="row">
+											<div class="col-lg-4 col-md-4">
+												<div class="plan_item">
+													<div class="plan_icon">
+														<i class="far fa-dot-circle"></i>
+													</div>
+													<h4>BASIC PLANS</h4>
+													<div class="plan_price">
+														<span>$500.00</span><ins>Yearly</ins>
+													</div>
+													<ul class="plan_dt">
+														<li><p>500 Listing</p></li>
+														<li><p>365 days visibility</p></li>
+														<li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+													</ul>
+													<div class="plan_btn">
+														<a href="checkout.html">Purchase Now</a>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-4">
+												<div class="plan_item">
+													<div class="plan_icon">
+														<i class="far fa-moon"></i>
+													</div>
+													<h4>STANDARD PLANS</h4>
+													<div class="plan_price">
+														<span>$1000.00</span><ins>Yearly</ins>
+													</div>
+													<ul class="plan_dt">
+														<li><p>1000 Listing</p></li>
+														<li><p>365 days visibility</p></li>
+														<li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+													</ul>
+													<div class="plan_btn">
+														<a href="checkout.html">Purchase Now</a>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-4">
+												<div class="plan_item">
+													<div class="plan_icon">
+														<i class="far fa-gem"></i>
+													</div>
+													<h4>PROFESSNIONAL PLANS</h4>
+													<div class="plan_price">
+														<span>$2000.00</span><ins>Yearly</ins>
+													</div>
+													<ul class="plan_dt">
+														<li><p>Unlimited Listing</p></li>
+														<li><p>365 days visibility</p></li>
+														<li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+													</ul>
+													<div class="plan_btn">
+														<a href="checkout.html">Purchase Now</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+																																													
+				</div>
+			</div>					
+		</main>
+
+{% endblock %}

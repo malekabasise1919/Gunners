@@ -11,6 +11,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\SearchSkillsType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProjetType extends AbstractType
@@ -22,6 +24,8 @@ class ProjetType extends AbstractType
             ->add('description', TextType::class)
             ->add('min_salaire')
             ->add('max_salaire')
+            //->add('fichiers' ,CollectionType::class, array(
+              //  'entry_type' => FileType::class))
             ->add('competences' , EntityType::class ,[
                 'class' => Competence::class ,
                 'query_builder' =>function (EntityRepository $er){
@@ -43,8 +47,8 @@ class ProjetType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(array(
             'data_class' => Projet::class,
-        ]);
+        ));
     }
 }
