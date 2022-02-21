@@ -19,6 +19,20 @@ class FactureRepository extends ServiceEntityRepository
         parent::__construct($registry, Facture::class);
     }
 
+    /**
+     * @throws \Doctrine\DBAL\Exception
+     */
+    public function getAllData($id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = "SELECT facture.id, facture.contrat_id, contrat.id, contrat.user_client_id, contrat.created_at, contrat.user_freelancer_id, contrat.prix, contrat.statut FROM facture JOIN contrat on contrat.id = :id and facture.contrat_id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue('id', $id);
+        $result = $stmt->executeQuery();
+
+        return $result->fetchAllAssociative();
+    }
+
     // /**
     //  * @return Facture[] Returns an array of Facture objects
     //  */
