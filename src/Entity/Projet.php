@@ -6,7 +6,6 @@ use App\Repository\ProjetRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
@@ -22,26 +21,21 @@ class Projet
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="The Project Name cannot be empty")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="The Project Name cannot be empty")
-     * @Assert\Length(min="20", minMessage="The description must contain 20 caractere as minimum")
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank(message="The minimum salary cannot be empty")
      */
     private $min_salaire;
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotBlank(message="The maximum salary cannot be empty")
      */
     private $max_salaire;
 
@@ -51,7 +45,7 @@ class Projet
     private $statut;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projets")
+     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="projets")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -262,8 +256,5 @@ class Projet
         }
 
         return $this;
-    }
-    public function __toString(): string{
-        return $this->nom;
     }
 }

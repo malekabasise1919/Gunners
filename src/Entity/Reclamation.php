@@ -18,8 +18,8 @@ class Reclamation
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Projet::class, inversedBy="reclamation", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)  
+     * @ORM\OneToOne(targetEntity=projet::class, inversedBy="reclamation", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $projet;
 

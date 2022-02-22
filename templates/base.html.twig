@@ -13,26 +13,25 @@
 
 
         <!-- Favicon Icon -->
-        <link rel="icon" type="image/png" href="images/fav.png">
+        <link rel="icon" type="image/png" href={{asset("images/fav.png")}}>
 
         <!-- Stylesheets -->
-        <link href="{{ asset ('css/responsive.css')}}" rel="stylesheet">
-        <link href="{{ asset ('css/style.css')}}"  rel="stylesheet">
-        <link href="{{ asset ('css/datepicker.min.css')}}"  rel="stylesheet">
-        <link href="{{ asset ('vendor/bootstrap/css/bootstrap.min.css')}}"  rel="stylesheet">
-        <link href="{{ asset ('vendor/fontawesome-free/css/all.min.css')}}"  rel="stylesheet">
-        <link href="{{ asset ('vendor/OwlCarousel/assets/owl.carousel.css')}}"  rel="stylesheet">
-        <link href="{{ asset ('vendor/OwlCarousel/assets/owl.theme.default.min.css')}}"  rel="stylesheet">
+        <link href={{asset('css/responsive.css')}}" rel="stylesheet">
+        <link href={{asset('css/style.css')}}  rel="stylesheet">
+        <link href={{asset('css/datepicker.min.css')}}  rel="stylesheet">
+        <link href={{asset('vendor/bootstrap/css/bootstrap.min.css')}}  rel="stylesheet">
+        <link href={{asset('vendor/fontawesome-free/css/all.min.css')}}  rel="stylesheet">
+        <link href={{asset('vendor/OwlCarousel/assets/owl.carousel.css')}}  rel="stylesheet">
+        <link href={{asset('vendor/OwlCarousel/assets/owl.theme.default.min.css')}}  rel="stylesheet">
 
         <!-- Semantic Css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset ('vendor/semantic/semantic.min.css')}}" >
+        <link rel="stylesheet" type="text/css" href={{asset('vendor/semantic/semantic.min.css')}} >
     </head>
     <body>
         {% block header %}
 
             <!-- Header Start -->
             <header>
-            {% if app.user %}
                 <div class="top-header">
                     <div class="container">
                         <div class="row">
@@ -68,9 +67,9 @@
                                                     <div class="user-request-list">
                                                         <div class="request-users">
                                                             <div class="user-request-dt">
-                                                                <a href="#"><img src="{{ asset('images/user-dp-1.jpg') }}" alt="">
+                                                                <a href="#"><img src={{asset('images/user-dp-1.jpg')}} alt="">
                                                                     <div class="user-title1">Jassica William </div>
-                                                                    <span>Hey How are you John Doe...</span>
+                                                                    <span>Hey How are you Chehine Zouari...</span>
                                                                 </a>
                                                             </div>
                                                             <div class="time5">2 min ago</div>
@@ -79,7 +78,7 @@
                                                     <div class="user-request-list">
                                                         <div class="request-users">
                                                             <div class="user-request-dt">
-                                                                <a href="#"><img src="{{ asset('images/user-dp-1.jpg') }}"  alt="">
+                                                                <a href="#"><img src={{asset('images/user-dp-1.jpg')}}  alt="">
                                                                     <div class="user-title1">Rock Smith </div>
                                                                     <span>Interesting Event! I will join this...</span>
                                                                 </a>
@@ -90,7 +89,7 @@
                                                     <div class="user-request-list">
                                                         <div class="request-users">
                                                             <div class="user-request-dt">
-                                                                <a href="#"><img src="{{ asset('images/user-dp-1.jpg') }}" alt="">
+                                                                <a href="#"><img src={{asset('images/user-dp-1.jpg')}} alt="">
                                                                     <div class="user-title1">Joy Doe </div>
                                                                     <span>Hey Sir! What about you...</span>
                                                                 </a>
@@ -99,7 +98,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="user-request-list">
-                                                        <a href="my_freelancer_messages.html" class="view-all">View All Messages</a>
+                                                        <a href={{asset("my_freelancer_messages.html")}} class="view-all">View All Messages</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -124,7 +123,7 @@
                                                             <div class="user-request-dt">
                                                                 <a href="#">
                                                                     <div class="noti-icon"><i class="fas fa-bullseye"></i></div>
-                                                                    <div class="user-title1">Johnson Smith</div>
+                                                                    <div class="user-title1">Chehine Zouari</div>
                                                                     <span>placed a bid on your <ins class="noti-p-link">I Need a ...</ins></span>
                                                                 </a>
                                                             </div>
@@ -142,27 +141,27 @@
                                                         </div>
                                                     </div>
                                                     <div class="user-request-list">
-                                                        <a href="my_freelancer_notifications.html" class="view-all">View All Notifications</a>
+                                                        <a href={{asset("my_freelancer_notifications.html")}} class="view-all">View All Notifications</a>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="account order-1 dropdown">
                                                     <a href="#" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                                                        <div class="user-dp"><img src="{{ asset('images/dp.jpg') }}" alt=""></div>
-                                                        <span>Hi! {{app.user.nom}}</span>
+                                                        <div class="user-dp"><img src={{asset('images/dp.jpg')}} alt=""></div>
+                                                        <span>Hi! Chehine</span>
                                                         <i class="fas fa-sort-down"></i>
                                                     </a>
                                                     <div class="dropdown-menu account-dropdown dropdown-menu-right">
-                                                        <a class="link-item" href="my_freelancer_dashboard.html">Dashboard</a>
-                                                        <a class="link-item" href="my_freelancer_setting.html">Setting</a>
-                                                        <a class="link-item" href="my_freelancer_messages.html">My Messages</a>
-                                                        <a class="link-item" href="my_freelancer_jobs.html">My Jobs</a>
-                                                        <a class="link-item" href="my_freelancer_bids.html">My Bids</a>
-                                                        <a class="link-item" href="my_freelancer_portfolio.html">My Portfolio</a>
-                                                        <a class="link-item" href="my_freelancer_bookmarks.html">My Bookmarks</a>
-                                                        <a class="link-item" href="my_freelancer_payments.html">Payments</a>
-                                                        <a class="link-item" href="sign_in.html">Logout</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_dashboard.html")}}>Dashboard</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_setting.html")}}>Setting</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_messages.html")}}>My Messages</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_jobs.html")}}>My Jobs</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_bids.html")}}>My Bids</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_portfolio.html")}}>My Portfolio</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_bookmarks.html")}}>My Bookmarks</a>
+                                                        <a class="link-item" href={{asset("my_freelancer_payments.html")}}>Payments</a>
+                                                        <a class="link-item" href={{asset("sign_in.html")}}>Logout</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -173,30 +172,43 @@
                         </div>
                     </div>
                 </div>
-                {% endif %}
                 <div class="sub-header">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <nav class="navbar navbar-expand-lg navbar-light bg-dark1 justify-content-sm-start">
-                                    <a class="order-1 order-lg-0 ml-lg-0 ml-3 mr-auto"  href="{{ path('home')}}"><img src="{{ asset ('images/logoF.svg') }}" alt="" style=""></a>
+                                    <a class="order-1 order-lg-0 ml-lg-0 ml-3 mr-auto" href={{asset("index.html")}}><img src={{asset('images/logoF.svg')}} alt="" style=""></a>
                                     <button class="navbar-toggler align-self-start" type="button">
                                         <i class="fas fa-bars"></i>
                                     </button>
                                     <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
                                         <ul class="navbar-nav align-self-stretch">
                                             <li class="nav-item active">
-                                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                                <a class="nav-link" href={{asset("index.html")}}>Home <span class="sr-only">(current)</span></a>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Jobs</a>
                                                 <div class="dropdown-menu pages-dropdown">
-                                                    <a class="link-item" href="browse_jobs.html">Browse Jobs</a>
-                                                    
+                                                    <a class="link-item" href={{asset("browse_jobs.html")}}>Browse Jobs</a>
+                                                    <a class="link-item" href={{asset("job_single_view.html")}}>Single Job View</a>
+                                                    <a class="link-item" href={{asset("post_a_job.html")}}>Post a Job</a>
                                                 </div>
                                             </li>
-                                          
-                                      
+                                            <li class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Work</a>
+                                                <div class="dropdown-menu pages-dropdown">
+                                                    <a class="link-item" href={{asset("browse_projects.html")}}>Browse Projects</a>
+                                                    <a class="link-item" href={{asset("project_single_view.html")}}>Single Project View</a>
+                                                    <a class="link-item" href={{asset("post_a_project.html")}}>Post a Project</a>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Companies</a>
+                                                <div class="dropdown-menu pages-dropdown">
+                                                    <a class="link-item" href="browse_companies.html">Browse Companies</a>
+                                                    <a class="link-item" href="other_company_profile.html">Company Profile</a>
+                                                </div>
+                                            </li>
                                             <li class="nav-item dropdown">
                                                 <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Freelancers</a>
                                                 <div class="dropdown-menu pages-dropdown">
@@ -204,20 +216,30 @@
                                                     <a class="link-item" href="other_freelancer_profile.html">Freelancer Profile</a>
                                                 </div>
                                             </li>
-                                           
+                                            <li class="nav-item dropdown pages152">
+                                                <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
+                                                    Pages <i class="fas fa-caret-down p-crt"></i>
+                                                </a>
+                                                <div class="dropdown-menu pages-dropdown">
+                                                    <a class="link-item" href="about.html">About</a>
+                                                    <a class="link-item" href="our_blog.html">Our Blog</a>
+                                                    <a class="link-item" href="blog_single_view.html">Signle Blog View</a>
+                                                    <a class="link-item" href="pricing_plans.html">Pricing Plans</a>
+                                                    <a class="link-item" href="checkout.html">Checkout</a>
+                                                    <a class="link-item" href="plan_invoice.html">Invoice Slip</a>
+                                                    <a class="link-item" href="sign_in.html">Sign in</a>
+                                                    <a class="link-item" href="sign_up.html">Sign up</a>
+                                                    <a class="link-item" href="sign_up_select_profile.html">Sign up Select Profiles</a>
+                                                    <a class="link-item" href="sign_up_freelancer_profile.html">Create Freelancer Profile</a>
+                                                    <a class="link-item" href="sign_up_company_profile.html">Create Company Profile</a>
+                                                    <a class="link-item" href="contact_us.html">Contact</a>
+                                                    <a class="link-item" href="help_center.html">Help Center</a>
+                                                </div>
+                                            </li>
                                         </ul>
                                         <a href="#" class="search-link" role="button" data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></a>
-                                        {% if app.user %}
-                                        <a href="{{ path('projet_new')}}" class="add-post">Post a Job</a>
-                                        {% endif %}
-                                        {% block connexion %}
-                                        {% if not app.user %}
-                                        <a href="{{ path('login')}}" class="add-post">Sign in</a>
-                                        {% endif %}
-                                        {% if app.user %}
-                                        <a href="{{ path('logout')}}" class="add-post">Logout</a>
-                                        {% endif %}
-                                        {% endblock %}
+                                        <a href="post_a_job.html" class="add-post">Post a Job</a>
+                                        <a href="post_a_project.html" class="add-task">Post a Task</a>
                                     </div>
                                     <div class="responsive-search order-1">
                                         <input type="text" class="rsp-search" placeholder="Search...">
@@ -234,6 +256,249 @@
         {% endblock %}
 
         {% block content %}
+            <!-- Body Start -->
+            <main class="browse-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="main-heading bids_heading">
+                                <h2>Create Freelancer Profile</h2>
+                                <div class="line-shape1">
+                                    <img src={{asset("images/line.svg")}} alt="">
+                                </div>
+                            </div>
+                            <div class="post501">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="label15">Profile Avtar*</label>
+                                                <div class="avtar_dp">
+                                                    <img src={{asset("images/profile_dp.jpg")}} alt="">
+                                                </div>
+                                                <div class="image-upload-wrap1 ml5">
+                                                    <input class="file-upload-input1" id="file3" type="file" onchange="readURL(this);" accept="image/*">
+                                                    <div class="drag-text1">
+                                                        Upload Files
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">First Name*</label>
+                                                <input type="text" class="job-input" placeholder="Your First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">Last Name*</label>
+                                                <input type="text" class="job-input" placeholder="Your Last Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">Email Address*</label>
+                                                <input type="email" class="job-input" placeholder="Enter Your Email Address">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">Birthday*</label>
+                                                <div class="smm_input">
+                                                    <input type="text" class="job-input datepicker-here" data-language="en" placeholder="Enter Your Birth Date">
+                                                    <div class="mix_max"><i class="fas fa-calendar-alt"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="label15">Description*</label>
+                                                <div class="description_dtu">
+                                                    <div class="description_actions">
+                                                        <a href="#"><i class="fas fa-bold"></i></a>
+                                                        <a href="#"><i class="fas fa-italic"></i></a>
+                                                        <a href="#"><i class="fas fa-list-ul"></i></a>
+                                                        <a href="#"><i class="fas fa-list-ol"></i></a>
+                                                    </div>
+                                                    <textarea class="textarea70" placeholder="Describe your experience, skills, etc. In complete details. This is your chance to show off."></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="label15">Tagline*</label>
+                                                <input type="email" class="job-input" placeholder="Wordpress Developer">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="label15">Skills*</label>
+                                                <div class="ui fluid multiple search selection dropdown skills-search">
+                                                    <input name="tags" type="hidden" value="">
+                                                    <i class="dropdown icon"></i>
+                                                    <input class="search" autocomplete="off" tabindex="0"><span class="sizer" style=""></span><div class="default text">Skills</div>
+                                                    <div class="menu transition hidden" tabindex="-1">
+                                                        <div class="item selected" data-value="angular">Angular</div>
+                                                        <div class="item" data-value="css">CSS</div>
+                                                        <div class="item" data-value="design">Graphic Design</div>
+                                                        <div class="item" data-value="ember">Ember</div>
+                                                        <div class="item" data-value="html">HTML</div>
+                                                        <div class="item" data-value="ia">Information Architecture</div>
+                                                        <div class="item" data-value="javascript">Javascript</div>
+                                                        <div class="item" data-value="mech">Mechanical Engineering</div>
+                                                        <div class="item" data-value="meteor">Meteor</div>
+                                                        <div class="item" data-value="node">NodeJS</div>
+                                                        <div class="item" data-value="plumbing">Plumbing</div>
+                                                        <div class="item" data-value="python">Python</div>
+                                                        <div class="item" data-value="rails">Rails</div>
+                                                        <div class="item" data-value="react">React</div>
+                                                        <div class="item" data-value="repair">Kitchen Repair</div>
+                                                        <div class="item" data-value="ruby">Ruby</div>
+                                                        <div class="item" data-value="ui">UI Design</div>
+                                                        <div class="item" data-value="ux">User Experience</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">Availability*</label>
+                                                <div class="ui fluid search selection dropdown skills-search">
+                                                    <input name="tags" type="hidden" value="">
+                                                    <i class="dropdown icon"></i>
+                                                    <input class="search" autocomplete="off" tabindex="0">
+                                                    <span class="sizer" style=""></span>
+                                                    <div class="default text">I’m not sure</div>
+                                                    <div class="menu transition hidden" tabindex="-1">
+                                                        <div class="item selected" data-value="Availability1">Full Time</div>
+                                                        <div class="item selected" data-value="Availability2">Part Time</div>
+                                                        <div class="item selected" data-value="Availability3">Not Available</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">Experience Level*</label>
+                                                <div class="ui fluid search selection dropdown skills-search">
+                                                    <input name="tags" type="hidden" value="">
+                                                    <i class="dropdown icon"></i>
+                                                    <input class="search" autocomplete="off" tabindex="0">
+                                                    <span class="sizer" style=""></span>
+                                                    <div class="default text">Select Experience Level</div>
+                                                    <div class="menu transition hidden" tabindex="-1">
+                                                        <div class="item" data-value="level1">level 01</div>
+                                                        <div class="item" data-value="level2">level 02</div>
+                                                        <div class="item" data-value="level3">level 03</div>
+                                                        <div class="item" data-value="level4">level 04</div>
+                                                        <div class="item" data-value="level5">level 05</div>
+                                                        <div class="item" data-value="level6">level 06</div>
+                                                        <div class="item" data-value="level7">level 07</div>
+                                                        <div class="item" data-value="level8">level 08</div>
+                                                        <div class="item" data-value="level9">level 09</div>
+                                                        <div class="item" data-value="level10">level 10</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">Pay Rate ($/hr)*</label>
+                                                <div class="smm_input">
+                                                    <input type="text" class="job-input" placeholder="Enter Your Page Rate">
+                                                    <div class="mix_max">Usd</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="label15">Languages*</label>
+                                                <div class="ui fluid search selection dropdown skills-search">
+                                                    <input name="tags" type="hidden" value="">
+                                                    <i class="dropdown icon"></i>
+                                                    <input class="search" autocomplete="off" tabindex="0">
+                                                    <span class="sizer" style=""></span>
+                                                    <div class="default text">Select Language</div>
+                                                    <div class="menu transition hidden" tabindex="-1">
+                                                        <div class="item" data-value="lang1">English</div>
+                                                        <div class="item" data-value="lang2">Hindi</div>
+                                                        <div class="item" data-value="lang3">Punjabi</div>
+                                                        <div class="item" data-value="lang4">Bengali</div>
+                                                        <div class="item" data-value="lang5">Portuguese</div>
+                                                        <div class="item" data-value="lang6">Russian</div>
+                                                        <div class="item" data-value="lang7">Japanese</div>
+                                                        <div class="item" data-value="lang8">Telugu</div>
+                                                        <div class="item" data-value="lang9">French</div>
+                                                        <div class="item" data-value="lang10">German</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="label15">Location*</label>
+                                                <div class="smm_input">
+                                                    <input type="text" class="job-input" placeholder="Type Address">
+                                                    <div class="loc_icon"><i class="fas fa-crosshairs"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="label15">Websites*</label>
+                                                <div class="smm_input5">
+                                                    <input type="text" class="website-input" placeholder="Http://entercompanysite.com">
+                                                    <div class="loc_icon5"><i class="fas fa-globe"></i></div>
+                                                </div>
+                                                <div class="smm_input5">
+                                                    <input type="text" class="website-input" placeholder="Http://enterblogsite.com">
+                                                    <div class="loc_icon5"><i class="far fa-edit"></i></div>
+                                                </div>
+                                                <div class="smm_input5">
+                                                    <input type="text" class="website-input" placeholder="Http://enterportfoliosite.com">
+                                                    <div class="loc_icon5"><i class="fas fa-columns"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <button class="post_jp_btn" type="submit">Finish Freelancer Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="main-heading bids_heading pjfaq80">
+                                <h2>FAQ</h2>
+                            </div>
+                            <div class="jp_faq">
+                                <div class="jp_faq_item">
+                                    <h4>01. Complete your profile</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum mi at erat egestas, nec porta diam pharetra.</p>
+                                </div>
+                                <div class="jp_faq_item">
+                                    <h4>02. Upload a profile picture</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum mi at erat egestas, nec porta diam pharetra.</p>
+                                </div>
+                                <div class="jp_faq_item">
+                                    <h4>03. Be honest about availability</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum mi at erat egestas, nec porta diam pharetra.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Body End -->
+
+
+
+
+
+
+
+
         {% endblock %}
         {% block footer %}
 
@@ -265,7 +530,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3">
                             <div class="about-jobby">
-                                <a href="index.html"><img src="{{ ('images/logo1.svg') }}" alt=""></a>
+                                <a href="index.html"><img src={{asset('images/logo1.svg')}} alt=""></a>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu purus et diam blandit vehicula sit amet sed metus. Fusce condimentum non neque at fringilla. Aenean malesuada aliquet tincidunt.</p>
                             </div>
                         </div>
@@ -338,13 +603,13 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script src="{{ asset('js/jquery.min.js') }}" ></script>
-            <script src="{{ asset('js/datepicker.min.js') }}" ></script>
-            <script src="{{ asset('js/i18n/datepicker.en.js') }}" ></script>
-            <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>
-            <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}" ></script>
-            <script src="{{ asset('vendor/semantic/semantic.min.js') }}" ></script>
-            <script src="{{ asset('js/custom1.js') }}" ></script>
+            <script src={{asset('js/jquery.min.js')}} ></script>
+            <script src={{asset('js/datepicker.min.js')}} ></script>
+            <script src={{asset('js/i18n/datepicker.en.js')}} ></script>
+            <script src={{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}} ></script>
+            <script src={{asset('vendor/OwlCarousel/owl.carousel.js')}} ></script>
+            <script src={{asset('vendor/semantic/semantic.min.js')}}></script>
+            <script src={{asset('js/custom1.js')}} ></script>
         {% endblock %}
 
     </body>

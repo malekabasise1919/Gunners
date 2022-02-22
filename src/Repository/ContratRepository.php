@@ -19,16 +19,6 @@ class ContratRepository extends ServiceEntityRepository
         parent::__construct($registry, Contrat::class);
     }
 
-    public function getAllData()
-    {
-        $conn = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT * from contrat';
-        $stmt = $conn->prepare($sql);
-        $result = $stmt->executeQuery();
-
-        return $result->fetchAllAssociative();
-    }
-
     // /**
     //  * @return Contrat[] Returns an array of Contrat objects
     //  */

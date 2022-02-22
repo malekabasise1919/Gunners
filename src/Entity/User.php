@@ -6,18 +6,11 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(
- *  fields={"email"},
- *  message="l'email que vous avez indiqué est deja utilisé ! "
- * )
  */
-class User implements UserInterface
+class User
 {
     /**
      * @ORM\Id
@@ -28,13 +21,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit contient au minimum 8 caractéres")
      */
     private $password;
 
@@ -74,7 +65,7 @@ class User implements UserInterface
     private $code;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime_immutable")
      */
     private $created_at;
 
@@ -117,11 +108,6 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user", orphanRemoval=true)
      */
     private $reviews;
-
-    /**
-     * @Assert\EqualTo(propertyPath="password" ,  message="vous n'avez pas tapé le meme mot de passe")
-     */
-    public $confirm_password;
 
     public function __construct()
     {
@@ -252,9 +238,9 @@ class User implements UserInterface
         return $this->created_at;
     }
 
-    public function setCreatedAt(): self
+    public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->created_at = new \Datetime();
+        $this->created_at = $created_at;
 
         return $this;
     }
@@ -474,11 +460,5 @@ class User implements UserInterface
 
         return $this;
     }
-    public function eraseCredentials(){}
-    public function getSalt(){}
-    public function getRoles(){
-        return ['Role_User'];
-    }
-    public function getUsername(){}
     
 }
