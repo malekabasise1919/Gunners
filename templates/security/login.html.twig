@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+{% block connexion%}  {% endblock%}
+		<main class="browse-section">
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col-md-6">
+						<div class="lg_form">
+							<div class="main-heading">
+								<h2>Sign in to Lanci Tounsi</h2>
+								<div class="line-shape1">
+
+								</div>
+							</div>
+						
+                            <form action="{{ path('login') }}" method='post'>
+							<div class="form-group">
+								<label class="label15">Email Address*</label>
+								<input type="email" name="_username"class="job-input" placeholder="Enter Email Address" required>
+							</div>
+							<div class="form-group">
+								<label class="label15" required min="8">Password*</label>
+								<input  name="_password" type="password" class="job-input" placeholder="Enter Password">
+							</div>
+							<button class="lr_btn" type="submit">Sign in Now</button>
+							</form>
+							<div class="done145">
+
+								<div class="done146">
+									Need an account?<a href="{{ path('security_registration') }}">Join us Now<i class="fas fa-angle-double-right"></i></a>
+								</div>
+								<div class="done147">
+									<a href="forgot_password.html">Forgot Password?</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+
+{% endblock %}

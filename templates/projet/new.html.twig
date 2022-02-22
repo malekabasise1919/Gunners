@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Projet{% endblock %}
+
+{% block content %}
+  <main class="browse-section">				
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">						
+						<div class="main-heading bids_heading">
+							<h2>Post a Job</h2>
+							<div class="line-shape1">
+								<img src="images/line.svg" alt="">
+							</div>
+						</div>
+						<div class="post501">
+							
+                            {{ form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label class="label15">Job Name*</label>
+											{{ form_widget(form.nom,{'attr':{ 'placeholder': 'Name of Project Here' ,'class': 'job-input' }})}}
+										</div>
+										<div class="form-group">
+											<label class="label15">Job Description*</label>
+											
+                                            {{ form_widget(form.description,{'attr':{ 'placeholder': 'Description of Project Here' ,'class': 'textarea_input' }})}}
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="requires">
+											What are the job requirements
+										</div>
+									</div>
+									
+									
+									
+									
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="label15">Salary Min*</label>
+											<div class="smm_input">
+												{{ form_widget(form.min_salaire,{'attr':{ 'placeholder': 'Min' ,'class': 'job-input' }})}}
+												<div class="mix_max">TND</div>															
+											</div>															
+										</div>															
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="label15">Salary Max*</label>
+											<div class="smm_input">
+												{{ form_widget(form.max_salaire,{'attr':{ 'placeholder': 'Max' ,'class': 'job-input' }})}}
+												<div class="mix_max">TND</div>															
+											</div>															
+										</div>															
+									</div>
+								
+									
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label class="label15">Skills*</label>
+											<div class="ui fluid multiple search selection dropdown skills-search">
+												<input name="tags" type="hidden" value="">
+												<i class="dropdown icon"></i>
+												<input class="search" autocomplete="off" tabindex="0"><span class="sizer" style=""></span><div class="default text">Skills</div>
+												<div class="menu transition hidden" tabindex="-1">
+													{{ form_widget(form.competences ,{'attr':{  'class': 'ui fluid multiple search selection  skills-search' }})}}
+												</div>
+											</div>
+										</div>
+									</div>
+                                    
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label class="label15">Upload Files*</label>
+											<div class="image-upload-wrap1">
+												{{ form_widget(form.fichiers ,{'attr':{  'class': 'file-upload-input1' }})}}
+
+												<div class="drag-text1">
+													Upload Files
+												</div>																	
+											</div>
+											<p class="upload_dt">Images, Pdf and MS Word Filess</p>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<button class="post_jp_btn" type="submit">Post a Job</button>
+									</div>
+								</div>
+                                {{ form_end(form)}}
+							
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="main-heading bids_heading pjfaq80">
+							<h2>FAQ</h2>
+						</div>
+						<div class="jp_faq">
+							<div class="jp_faq_item">
+								<h4>01. Is there a fee to post a job?</h4>
+								<p>There are pricing plans monthly and yearly for jobs on Jobby. It is a paid service that we offer bith for the employer and the freelancer.</p>
+							</div>
+							<div class="jp_faq_item">
+								<h4>02. How do I find freelancers for my job?</h4>
+								<p>Posting a job on Jobby will get your job in front of the most qualified freelancers and agencies. You will then get applications for the job with the applicant’s details and reasons why they are the best fit for the job. You can also search for freelancers and invite them to apply.</p>
+							</div>
+							<div class="jp_faq_item">
+								<h4>03. How do I pay freelancers and agencies?</h4>
+								<p>You’re free to pay your freelancer and agencies. you can pay automatically for their work through Paypal, Payoneer, or  (which allows you to pay via credit card, debit card).</p>
+							</div>
+						</div>
+					</div>																																						
+				</div>
+			</div>					
+		</main>
+{% endblock %}
