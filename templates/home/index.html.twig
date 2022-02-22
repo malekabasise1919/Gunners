@@ -91,15 +91,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-3 col-md-6 col-12">
-							<div class="achive-text">3M Registered Members</div>
+							<div class="achive-text">{% set size1 = user | length %}
+								<span class="nav-link"> {{ size1 }}</span> Registered Members</div>
 						</div>
 						<div class="col-lg-3 col-md-6 col-12">
-							<div class="achive-text">786k Jobs Found</div>
+							<div class="achive-text">{% set size2 = projet | length %}<span class="nav-link"> {{ size2 }}</span> Jobs Found</div>
 						</div>
                         
-						<div class="col-lg-2 col-md-6 col-12">
-							<div class="achive-text">1.2K Best Companies</div>
-						</div>
+
 						<div class="col-lg-4 col-md-6 col-12">
 							<ul class="post-buttons">
                             {% if app.user%}

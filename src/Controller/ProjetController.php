@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Projet;
+use App\Entity\Reclamation;
 use App\Form\ProjetType;
 use App\Entity\Competence;
+use App\Form\ReclamationType;
 use App\Repository\ProjetRepository;
+use App\Repository\ReclamationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\Security\Core\Security;
@@ -31,10 +34,13 @@ class ProjetController extends AbstractController
      */
     public function index(ProjetRepository $projetRepository): Response
     {
-        return $this->render('projet/index.html.twig', [
-            'projets' => $projetRepository->findAll(),
+        $user = $this->security->getUser();
+        $projet = $this->getDoctrine()->getRepository(Projet::class)->findBy(['user' =>  $user]);
+        return $this->render('reclamation/jareb.html.twig', [
+            'projets' => $projet ,
         ]);
     }
+
 
     /**
      * @Route("/new", name="projet_new")
@@ -73,17 +79,6 @@ class ProjetController extends AbstractController
             'skills' =>$skills,
         ]);
     }
-
-    /**
-     * @Route("/{id}", name="projet_show", methods={"GET"})
-     */
-    public function show(Projet $projet): Response
-    {
-        return $this->render('projet/show.html.twig', [
-            'projet' => $projet,
-        ]);
-    }
-
     /**
      * @Route("/{id}/edit", name="projet_edit", methods={"GET", "POST"})
      */
@@ -103,9 +98,8 @@ class ProjetController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     /**
-     * @Route("/{id}", name="projet_delete", methods={"POST"})
+     * @Route("/{id}", name="projet_delete")
      */
     public function delete(Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
     {

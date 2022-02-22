@@ -19,7 +19,7 @@ class Reclamation
 
     /**
      * @ORM\OneToOne(targetEntity=Projet::class, inversedBy="reclamation", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)  
+     * @ORM\JoinColumn(nullable=false)
      */
     private $projet;
 
@@ -27,6 +27,11 @@ class Reclamation
      * @ORM\Column(type="string", length=255)
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_de_reclamation;
 
     public function getId(): ?int
     {
@@ -53,6 +58,18 @@ class Reclamation
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDateDeReclamation(): ?\DateTimeInterface
+    {
+        return $this->date_de_reclamation;
+    }
+
+    public function setDateDeReclamation(): self
+    {
+        $this->date_de_reclamation = new \Datetime();
 
         return $this;
     }

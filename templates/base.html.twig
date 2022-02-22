@@ -69,8 +69,8 @@
                                                         <div class="request-users">
                                                             <div class="user-request-dt">
                                                                 <a href="#"><img src="{{ asset('images/user-dp-1.jpg') }}" alt="">
-                                                                    <div class="user-title1">Jassica William </div>
-                                                                    <span>Hey How are you John Doe...</span>
+                                                                    <div class="user-title1">Oussama Fdhila </div>
+                                                                    <span>Hey How are you Oussema...</span>
                                                                 </a>
                                                             </div>
                                                             <div class="time5">2 min ago</div>
@@ -91,7 +91,7 @@
                                                         <div class="request-users">
                                                             <div class="user-request-dt">
                                                                 <a href="#"><img src="{{ asset('images/user-dp-1.jpg') }}" alt="">
-                                                                    <div class="user-title1">Joy Doe </div>
+                                                                    <div class="user-title1">Oussama Fdhila </div>
                                                                     <span>Hey Sir! What about you...</span>
                                                                 </a>
                                                             </div>
@@ -149,8 +149,8 @@
                                             <li>
                                                 <div class="account order-1 dropdown">
                                                     <a href="#" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                                                        <div class="user-dp"><img src="{{ asset('images/dp.jpg') }}" alt=""></div>
-                                                        <span>Hi! {{app.user.nom}}</span>
+                                                        <div class="user-dp"><img alt="" src="{{ asset('Oussema.jpg') }}"></div>
+                                                        <span>Hi! Oussema {{app.user.nom}}</span>
                                                         <i class="fas fa-sort-down"></i>
                                                     </a>
                                                     <div class="dropdown-menu account-dropdown dropdown-menu-right">
@@ -160,7 +160,7 @@
                                                         <a class="link-item" href="my_freelancer_jobs.html">My Jobs</a>
                                                         <a class="link-item" href="my_freelancer_bids.html">My Bids</a>
                                                         <a class="link-item" href="my_freelancer_portfolio.html">My Portfolio</a>
-                                                        <a class="link-item" href="my_freelancer_bookmarks.html">My Bookmarks</a>
+                                                        <a class="link-item" href="{{ path('projet_index')}}">My projects</a>
                                                         <a class="link-item" href="my_freelancer_payments.html">Payments</a>
                                                         <a class="link-item" href="sign_in.html">Logout</a>
                                                     </div>
@@ -186,7 +186,7 @@
                                     <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
                                         <ul class="navbar-nav align-self-stretch">
                                             <li class="nav-item active">
-                                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                                <a class="nav-link" href="{{path('home')}}">Home <span class="sr-only">(current)</span></a>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Jobs</a>
@@ -265,7 +265,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3">
                             <div class="about-jobby">
-                                <a href="index.html"><img src="{{ ('images/logo1.svg') }}" alt=""></a>
+                                <a href={{path('home')}}><img src="{{ ('images/logo1.svg') }}" alt=""></a>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu purus et diam blandit vehicula sit amet sed metus. Fusce condimentum non neque at fringilla. Aenean malesuada aliquet tincidunt.</p>
                             </div>
                         </div>

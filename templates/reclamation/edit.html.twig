@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une réclamation{% endblock %}
+
+{% block content %}
+    <h1>Modifier cette réclamation</h1>
+
+    <main class="browse-section">
+        <div class="container">
+            <div class="row">
+
+                <div class="post501">
+                    {{ form_start(form)}}
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="form-group">
+                                <label class="label15">Description*</label>
+                                {{ form_widget(form.description,{'attr':{ 'placeholder': 'Description of Project Here' ,'class': 'textarea_input' }})}}
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12">
+                            <button class="add-post" type="submit">Modifier</button>
+                        </div>
+                    </div>
+                    {{ form_end(form)}}
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </main>
+{% endblock %}

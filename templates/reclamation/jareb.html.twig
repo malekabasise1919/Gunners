@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La liste des projets{% endblock %}
+
+{% block content %}
+    <h1>La liste des projets</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Min_salaire</th>
+            <th>Max_salaire</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for projet in projets %}
+            <tr>
+                <td>{{ projet.id }}</td>
+                <td>{{ projet.nom }}</td>
+                <td>{{ projet.description }}</td>
+                <td>{{ projet.minSalaire }}</td>
+                <td>{{ projet.maxSalaire }}</td>
+                <td>{{ projet.statut }}</td>
+                <td>
+                    <div class="col-lg=-3 col-md-3">
+                        <div class="search-link">
+                            {% if projet.getReclamation()==null %}
+
+                            <td><a href="{{ path('reclamation_new', {'projet_id': projet.id}) }}" class="add-post">Réclamer</a></td>
+                                    <td><a href="{{ path('projet_delete', {'id': projet.id}) }}" class="add-post">Supprimer</a></td>
+                                    <td><a href="{{ path('projet_edit', {'id': projet.id}) }}" class="add-post">Modifier</a></td>
+
+                                {% else %}
+
+                                    <td><a href="{{ path('projet_delete', {'id': projet.id}) }}" class="add-post">Supprimer</a></td>
+                                    <td><a href="{{ path('projet_edit', {'id': projet.id}) }}" class="add-post">Modifier</a></td>
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

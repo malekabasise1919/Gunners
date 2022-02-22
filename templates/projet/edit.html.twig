@@ -1,13 +1,78 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Projet{% endblock %}
+{% block title %}Edit Project{% endblock %}
 
-{% block body %}
-    <h1>Edit Projet</h1>
+{% block content %}
+    <h1>Modifier ce projet</h1>
 
-    {{ include('projet/_form.html.twig', {'button_label': 'Update'}) }}
+    <main class="browse-section">
+        <div class="container">
+            <div class="row">
+                <div class="post501">
+                    {{ form_start(form)}}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="label15">Nom*</label>
+                                {{ form_widget(form.nom,{'attr':{ 'placeholder': 'Name Here' ,'class': 'job-input' }})}}
+                            </div>
 
-    <a href="{{ path('projet_index') }}">back to list</a>
+                            <div class="form-group">
+                                <label class="label15">Min_salaire*</label>
+                                {{ form_widget(form.min_salaire,{'attr':{ 'placeholder': 'min salary Here' ,'class': 'job-input' }})}}
+                            </div>
+                            <div class="form-group">
+                                <label class="label15">Max_salaire*</label>
+                                {{ form_widget(form.max_salaire,{'attr':{ 'placeholder': 'max salary Here' ,'class': 'job-input' }})}}
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="label15">Skills*</label>
+                                    {{ form_widget(form.competences,{'attr':{ 'placeholder': 'Skills Here' ,'class': 'menu transition hidden' }})}}
+                                    <div class="ui fluid multiple search selection dropdown skills-search">
+                                        <input name="tags" type="hidden" value="">
+                                        <i class="dropdown icon"></i>
+                                        <input class="search" autocomplete="off" tabindex="0"><span class="sizer" style=""></span><div class="default text">Skills</div>
+                                        <div class="menu transition hidden" tabindex="-1">
+                                            <div class="item selected" data-value="angular">Angular</div>
+                                            <div class="item" data-value="css">CSS</div>
+                                            <div class="item" data-value="design">Graphic Design</div>
+                                            <div class="item" data-value="ember">Ember</div>
+                                            <div class="item" data-value="html">HTML</div>
+                                            <div class="item" data-value="ia">Information Architecture</div>
+                                            <div class="item" data-value="javascript">Javascript</div>
+                                            <div class="item" data-value="mech">Mechanical Engineering</div>
+                                            <div class="item" data-value="meteor">Meteor</div>
+                                            <div class="item" data-value="node">NodeJS</div>
+                                            <div class="item" data-value="plumbing">Plumbing</div>
+                                            <div class="item" data-value="python">Python</div>
+                                            <div class="item" data-value="rails">Rails</div>
+                                            <div class="item" data-value="react">React</div>
+                                            <div class="item" data-value="repair">Kitchen Repair</div>
+                                            <div class="item" data-value="ruby">Ruby</div>
+                                            <div class="item" data-value="ui">UI Design</div>
+                                            <div class="item" data-value="ux">User Experience</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label15">Description*</label>
+                                {{ form_widget(form.description,{'attr':{ 'placeholder': 'Description of Project Here' ,'class': 'textarea_input' }})}}
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            {{ form_widget(form.description,{'attr':{ 'class': '"post_jp_btn"' }})}}
+                            <button class="post_jp_btn" type="submit">Modifier</button>
+                        </div>
+                    </div>
+                    {{ form_end(form)}}
+                </div>
+            </div>
 
-    {{ include('projet/_delete_form.html.twig') }}
+        </div>
+        </div>
+    </main>
+    {{ include('projet/_form.html.twig') }}
+
 {% endblock %}

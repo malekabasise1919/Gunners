@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La liste des réclamations{% endblock %}
+
+{% block content %}
+    <h1>La liste des réclamations</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Date de réclamation</th>
+            <th>Suppressions et Modifications</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.datedereclamation | date}}</td>
+                <td>
+                <div class="col-lg=-3 col-md-3">
+                    <div class="search-link">
+
+                            <td><a href="{{ path('reclamation_delete', {'id': reclamation.id}) }}" class="add-post">Supprimer</a></td>
+                            <td><a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}" class="add-post">Modifier</a></td>
+                    </div>
+                </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
