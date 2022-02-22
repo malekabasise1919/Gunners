@@ -22,7 +22,7 @@ class Facture
     private $created_at;
 
     /**
-     * @ORM\OneToOne(targetEntity=contrat::class, inversedBy="facture", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Contrat::class, inversedBy="facture", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $contrat;

@@ -37,68 +37,28 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="user_new", methods={"GET", "POST"})
-     */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+   
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
-    }
+  
 
     /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
+     * @Route("/editProfil", name="editProfil")
      */
-    public function show(User $user): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager)
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
+        $user = $this->security->getUser();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('user/edit.html.twig', [
-            'user' => $user,
             'form' => $form->createView(),
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="user_delete", methods={"POST"})
-     */
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($user);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
-    }
+    
 }

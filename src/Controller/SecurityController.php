@@ -11,6 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Form\RegistrationType;
+use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\Security\Http\SecurityEvents;
 
 class SecurityController extends AbstractController
 {
@@ -34,21 +39,24 @@ class SecurityController extends AbstractController
      * @Route("/inscription", name="security_registration")
      */
     public function registration( Request $request ,  EntityManagerInterface $manager ,
-    UserPasswordEncoderInterface $encoder){
+    UserPasswordEncoderInterface $encoder ){
 
         $user=new User();
         $form= $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $user->setVerified(1);
+            $user->setVerified(0);
             $user->setCreatedAt();
             $user->setBanned(0);
             $hash = $encoder->encodePassword($user , $user->getPassword());
             $user->setPassword($hash);
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute("login");
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $this->get('security.token_storage')->setToken($token);
+        
+            return $this->redirectToRoute('editProfil');
         }
  
         

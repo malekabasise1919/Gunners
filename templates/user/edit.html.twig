@@ -1,13 +1,145 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}edit User{% endblock %}
 
-{% block body %}
-    <h1>Edit User</h1>
+{% block content %}
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+    <main class="browse-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="main-heading bids_heading">
+                        <h2>Edit Freelancer Profile</h2>
+                        <div class="line-shape1">
+                            <img src="images/line.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="post501">
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="label15">Profile Avtar*</label>
+                                    <div class="avtar_dp">
+                                        <img src="images/profile_dp.jpg" alt="">
+                                    </div>
+                                    <div class="image-upload-wrap1 ml5">
+                                        <input class="file-upload-input1" id="file3" type="file" onchange="readURL(this);" accept="image/*">
+                                        <div class="drag-text1">
+                                            Upload Files
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                {{ form_start(form) }}
+                                    <label class="label15">First Name*</label>
+                                    {{ form_widget(form.prenom,{'attr':{ 'placeholder': 'First Name Here' ,'class': 'job-input' }})}}
 
-    <a href="{{ path('user_index') }}">back to list</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="label15">Last Name*</label>
+                                    {{ form_widget(form.nom,{'attr':{ 'placeholder': 'Last Name Here' ,'class': 'job-input' }})}}
 
-    {{ include('user/_delete_form.html.twig') }}
+                                </div>
+                            </div>
+                           
+                          
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="label15">Birthday*</label>
+                                    {{ form_widget(form.date_naissance,{'attr':{ 'placeholder': 'Enter Your Birth Date'}})}}
+                                </div>
+                            </div>
+                           
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="label15">Skills*</label>
+                                    {{ form_widget(form.competences,{'attr':{ 'placeholder': 'Skills Here' ,'class': 'menu transition hidden' }})}}
+                                    <div class="ui fluid multiple search selection dropdown skills-search">
+                                        <input name="tags" type="hidden" value="">
+                                        <i class="dropdown icon"></i>
+                                        <input class="search" autocomplete="off" tabindex="0"><span class="sizer" style=""></span><div class="default text">Skills</div>
+                                        <div class="menu transition hidden" tabindex="-1">
+                                            <div class="item selected" data-value="angular">Angular</div>
+                                            <div class="item" data-value="css">CSS</div>
+                                            <div class="item" data-value="design">Graphic Design</div>
+                                            <div class="item" data-value="ember">Ember</div>
+                                            <div class="item" data-value="html">HTML</div>
+                                            <div class="item" data-value="ia">Information Architecture</div>
+                                            <div class="item" data-value="javascript">Javascript</div>
+                                            <div class="item" data-value="mech">Mechanical Engineering</div>
+                                            <div class="item" data-value="meteor">Meteor</div>
+                                            <div class="item" data-value="node">NodeJS</div>
+                                            <div class="item" data-value="plumbing">Plumbing</div>
+                                            <div class="item" data-value="python">Python</div>
+                                            <div class="item" data-value="rails">Rails</div>
+                                            <div class="item" data-value="react">React</div>
+                                            <div class="item" data-value="repair">Kitchen Repair</div>
+                                            <div class="item" data-value="ruby">Ruby</div>
+                                            <div class="item" data-value="ui">UI Design</div>
+                                            <div class="item" data-value="ux">User Experience</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="label15">Description*</label>
+                                    {{ form_widget(form.description,{'attr':{ 'placeholder': 'Description of Project Here' ,'class': 'textarea_input' }})}}
+
+                                </div>
+                            </div>
+                             <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="label15">Profession*</label>
+                                    {{ form_widget(form.profession,{'attr':{ 'placeholder': 'Job Here' ,'class': 'job-input' }})}}
+
+                                </div>
+                            </div>
+                                <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="label15">Address</label>
+                                    {{ form_widget(form.address,{'attr':{ 'placeholder': 'Address Here ' ,'class': 'job-input' }})}}
+
+                                </div>
+                            </div>
+                             <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="label15">Code Postal</label>
+                                    {{ form_widget(form.code_postal,{'attr':{ 'placeholder': 'Code postal Here' ,'class': 'job-input' }})}}
+
+                                </div>
+                            </div>
+
+
+                                </div>
+                            </div>
+
+
+                            </div>
+
+
+
+
+                            <div class="col-lg-12">
+                                <button class="post_jp_btn" type="submit">Done</button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </main>
+
+    
+
+    
 {% endblock %}

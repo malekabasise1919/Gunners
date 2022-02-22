@@ -35,7 +35,6 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="8", minMessage="Votre mot de passe doit contient au minimum 8 caractéres")
-     * @Assert\EqualTo(propertyPath="confirm_password" ,  message="vous n'avez pas tapé le meme mot de passe")
      */
     private $password;
 
@@ -128,6 +127,16 @@ class User implements UserInterface
      * @ORM\Column(type="integer", nullable=true)
      */
     private $bids;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $code_postal;
 
     public function __construct()
     {
@@ -495,6 +504,30 @@ class User implements UserInterface
     public function setBids(?int $bids): self
     {
         $this->bids = $bids;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(?int $code_postal): self
+    {
+        $this->code_postal = $code_postal;
 
         return $this;
     }

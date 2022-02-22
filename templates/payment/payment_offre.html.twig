@@ -71,7 +71,8 @@
 												<td>
 													<div class="user_dt_trans">	
 													{% if t.Facture.id %}													
-														<a href="{{path('facture',{'id': t.Facture.id})}}">{{t.Facture.id}}</a>
+														<a href="{{path('facture',{'id': t.Facture.id})}}" target="_blank">
+														 <img src=" {{ asset ('images/icon-pdf.png')}}" style="width:25px; height:25px" ></a>
 													{% endif %}
 													</div>
 												</td>
@@ -145,10 +146,7 @@
 					</div>
 			
 					<div class="col-md-12">
-						<div class="ui checkbox apply_check check_out">
-							<input type="checkbox" tabindex="0" class="hidden">
-							<label style="color:#242424 !important;">I agree to the Terms and Conditions and the Automatic Renewal Terms</label>
-						</div>
+						
 						<button class="post_jp_btn" type="submit" onclick="formHasError()">PROCEED PAYMENT</button>
 						
                         {{ form_end(form)}}

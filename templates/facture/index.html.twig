@@ -1,20 +1,176 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Hello FactureController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block title %} {% endblock %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block content %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/bacca/Downloads/Gunners-malek/Gunners-malek/src/Controller/FactureController.php'|file_link(0) }}">src/Controller/FactureController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/bacca/Downloads/Gunners-malek/Gunners-malek/templates/facture/index.html.twig'|file_link(0) }}">templates/facture/index.html.twig</a></code></li>
-    </ul>
-</div>
+<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, shrink-to-fit=9">
+		<meta name="description" content="Gambolthemes">
+		<meta name="author" content="Gambolthemes">
+		
+		<!-- Favicon Icon -->
+		<link rel="icon" type="image/png" href="{{ asset ('images/fav.png') }}">
+		
+		<!-- Stylesheets -->
+		<link href="{{ asset ('css/responsive.css') }}" rel="stylesheet">
+		<link href="{{ asset ('css/style.css') }}" rel="stylesheet">
+		<link href="{{ asset ('css/datepicker.min.css') }}" rel="stylesheet">
+		<link href=" {{ asset ('css/jquery.range.css') }}" rel="stylesheet">
+		<link href="{{ asset ('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset ('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+		<link href=" {{ asset ('vendor/OwlCarousel/assets/owl.carousel.css') }}" rel="stylesheet">
+		<link href="{{ asset ('vendor/OwlCarousel/assets/owl.theme.default.min.css' ) }}" rel="stylesheet">
+		
+		<!-- Semantic Css -->
+		<link rel="stylesheet" type="text/css" href=" {{ asset ('vendor/semantic/semantic.min.css') }}">
+<body class="main_invoice">
+		<!-- Header Start -->
+		<div class="invc_header">			
+			<div class="container">				
+				<div class="row justify-content-md-center">
+					<div class="col-md-8 col-sm-12">
+						<div class="header102">									
+							<div class="header_logo">									
+								<img src="{{ asset ('images/logoF.svg') }}" alt="">
+							</div>
+							<div class="invoice_heading">									
+								
+							</div>
+						</div>							
+					</div>
+				</div>
+			</div>		
+		</div>
+		<!-- Header End -->		
+		<!-- Invoice Body Start -->	
+		<section class="invoice_section">
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col-md-8">
+						<div class="invoice_body">
+							<div class="nvdate_dt">
+								<div class="nvde_dt45">
+								
+								</div>
+								<div class="nvde_dt46">
+									<ul class="in11448">
+										<li><div class="vdt-list"><span>Date :</span> {{ facture.CreatedAt() |date}}</div></li>
+										<li><div class="vdt-list"><span>Invoice No :</span>{{ facture.getId()}}</div></li>
+										
+									</ul>								
+								</div>
+							</div>
+							<h3 class="dff474">Invoice</h3>
+							<div class="jike145">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="vhls140">
+											<h4>Customer</h4>
+											<ul>
+												<li><div class="vdt-list">{{facture.getTransaction().getUser().getNom()}}</div></li>
+												<li><div class="vdt-list">{{facture.getTransaction().getUser().getPrenom()}}</div></li>
+												<li><div class="vdt-list">{{facture.getTransaction().getUser().getAddress}}</div></li>
+												<li><div class="vdt-list">{{facture.getTransaction().getUser().getCodePostal()}}</div></li>
+												
+											</ul>
+										</div>		
+									</div>
+                                    {% if facture.getContrat() != null%}
+									<div class="col-md-6">
+										<div class="vhls140">
+											<h4>Supplier</h4>
+											<ul>
+												<li><div class="vdt-list">Jobby LTD</div></li>
+												<li><div class="vdt-list">#1234, Shahid karnail Singh Nagar,</div></li>
+												<li><div class="vdt-list">Near MBD Mall,</div></li>
+												<li><div class="vdt-list">141001</div></li>
+												<li><div class="vdt-list">Ludhiana </div></li>
+												<li><div class="vdt-list">Punjab </div></li>
+												<li><div class="vdt-list">India </div></li>
+											</ul>
+										</div>	
+                                        {% endif %}	
+									</div>									
+								</div>	
+							</div>	
+							<div class="invoice_table">
+								<div class="table-responsive-md">
+									<table class="table table-borderless">
+										<thead>
+											<tr>
+											  <th scope="col">Description</th>
+											  <th scope="col">Price</th>
+											  <th scope="col">Vat(0%)</th>
+											  <th scope="col">Total Amount</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">
+													<div class="user_dt_trans">
+														<p>{{ facture.getTransaction().getType()}} </p>
+													</div>
+												</th>
+												<td>
+													<div class="user_dt_trans">														
+														<p>{{ facture.getTransaction().getPrix()}} TND</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">
+														<p>0.00 TND</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">														
+														<p> {{ facture.getTransaction().getPrix()}} TND</p>
+													</div>
+												</td>												
+											</tr>
+											<tr>
+												<th scope="row"></th>
+												<td colspan="3">
+													<div class="user_dt_trans jsk1145">														
+														<div class="totalinv2">Invoice Total :  {{ facture.getTransaction().getPrix()}} TND</div>
+														<p>{{ facture.getTransaction().getStatut()}} </p>
+													</div>
+												</td>												
+											</tr>											
+										</tbody>
+									</table>														
+								</div>
+							</div>
+							<div class="invoice_footer">
+								<div class="leftfooter">
+									<p>Thanks for buying.</p>
+								</div>
+								<div class="righttfooter">
+									<a class="print_btn" href="javascript:window.print();">Print</a> 
+								</div>
+							</div>
+						</div>		
+					</div>						
+				</div>		
+			</div>		
+		</section>		
+		<!-- Invoice Body End -->				
+		
+		<!-- Scroll to Top Button Start -->
+		<button onclick="topFunction()" id="pageup" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+		<!-- Scroll to Top Button End -->
+		
+		<!-- Scripts js -->	
+		<script src="{{ asset ('js/jquery.min.js') }}"></script>
+		<script src=" {{ asset ('js/datepicker.min.js') }}"></script>
+		<script src="{{ asset ('js/i18n/datepicker.en.js') }}"></script>
+		<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+		<script src="{{ asset ('vendor/OwlCarousel/owl.carousel.js' )}}"></script>
+		<script src="{{ asset ('vendor/semantic/semantic.min.js') }}"></script>
+		<script src="{{ asset ('js/jquery.range-min.js') }}"></script>
+		<script src="{{ asset ('js/custom1.js') }}"></script>
+		
+		
+	</body>
 {% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TransactionController!{% endblock %}
+
+{% block content %}
+<main class="browse-section">				
+			<div class="container">
+			
+			{% if transactions!= null %}
+			<div class="row justify-content-md-center">					
+					<div class="col-md-9">
+						<div class="main-heading">
+							<h2> My Transactions</h2>
+							<div class="line-shape1">
+								<img src="images/line.svg" alt="">
+							</div>
+						</div>
+						<div class="statement_table checkout_dt">
+							<div class="statement_body">
+								<div class="table-responsive-md">
+									<table class="table table-striped">
+									<thead>
+										<tr>
+										  
+										  <th scope="col">Type</th>
+										  <th scope="col">Methode of payment</th>
+										  <th scope="col">Total Amount</th>
+										  <th scope="col"> Date</th>
+										  <th scope="col"> Facture</th>
+										</tr>
+										</thead>
+										<tbody>
+										{% for t in transactions %}
+											<tr>
+												<th scope="row">
+													<div class="user_dt_trans">
+														<p>{{ t.type}}</p>
+													</div>
+												</th>
+												<td>
+													<div class="user_dt_trans">														
+														<p>{{t.statut}}</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">
+														<p>{{ t.prix }}TND</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">														
+														<p>{{t.getCreatedAt() | date }}</p>
+													</div>
+												</td>
+												<td>
+													<div class="user_dt_trans">	
+													{% if t.Facture.id %}													
+														<a href="{{path('facture',{'id': t.Facture.id})}}" target="_blank">
+														 <img src=" {{ asset ('images/icon-pdf.png')}}" style="width:25px; height:25px" ></a>
+													{% endif %}
+													</div>
+												</td>
+											</tr>	
+											{% endfor %}																			
+										</tbody>
+									</table>														
+								</div>
+							</div>
+						</div>
+					</div>																																										
+				</div>
+				{% endif %}
+			{% if transactions== null %}
+            <div class="row justify-content-md-center">					
+					<div class="col-md-9">
+						<div class="main-heading">
+							<h2>Last 5 Transactions</h2>
+							<div class="line-shape1">
+								<img src="images/line.svg" alt="">
+							</div>
+						</div>
+						<div class="statement_table checkout_dt">
+							<div class="statement_body">
+								<div class="table-responsive-md">
+									<h2> You have No Transaction Now </h2>													
+								</div>
+							</div>
+						</div>
+					</div>																																										
+				</div>
+            {% endif %}
+			</div>					
+		</main>
+{% endblock %}
