@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\PropositionRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PropositionRepository::class)
@@ -20,36 +19,33 @@ class Proposition
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank (message="Cant be empty")
      */
     private $prix;
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank (message="Cant be empty")
+     * @ORM\Column(type="date")
      */
     private $date_max;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @ORM\JoinColumn(nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Projet::class, inversedBy="propositions")
+     * @ORM\ManyToOne(targetEntity=projet::class, inversedBy="propositions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $projet;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="propositions")
+     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="propositions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime_immutable")
      */
     private $created_at;
 
@@ -70,12 +66,12 @@ class Proposition
         return $this;
     }
 
-    public function getDateMax(): ?int
+    public function getDateMax(): ?\DateTimeInterface
     {
         return $this->date_max;
     }
 
-    public function setDateMax(int $date_max): self
+    public function setDateMax(\DateTimeInterface $date_max): self
     {
         $this->date_max = $date_max;
 
@@ -123,10 +119,9 @@ class Proposition
         return $this->created_at;
     }
 
-
-    public function setCreatedAt(): self
+    public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->created_at = new \Datetime();
+        $this->created_at = $created_at;
 
         return $this;
     }

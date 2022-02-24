@@ -13,7 +13,7 @@
 
 
         <!-- Favicon Icon -->
-        <link rel="icon" type="image/png" href="{{ asset('images/fav.png') }}">
+        <link rel="icon" type="image/png" href="images/fav.png">
 
         <!-- Stylesheets -->
         <link href="{{ asset ('css/responsive.css')}}" rel="stylesheet">
@@ -158,7 +158,7 @@
                                                         <a class="link-item" href="my_freelancer_setting.html">Setting</a>
                                                         <a class="link-item" href="my_freelancer_messages.html">My Messages</a>
                                                         <a class="link-item" href="my_freelancer_jobs.html">My Jobs</a>
-                                                        <a class="link-item" href="{{ path('bids') }}">My Bids</a>
+                                                        <a class="link-item" href="my_freelancer_bids.html">My Bids</a>
                                                         <a class="link-item" href="my_freelancer_portfolio.html">My Portfolio</a>
                                                         <a class="link-item" href="my_freelancer_bookmarks.html">My Bookmarks</a>
                                                         <a class="link-item" href="my_freelancer_payments.html">Payments</a>
@@ -186,12 +186,12 @@
                                     <div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
                                         <ul class="navbar-nav align-self-stretch">
                                             <li class="nav-item active">
-                                                <a class="nav-link" href="{{ path('home')}}">Home <span class="sr-only">(current)</span></a>
+                                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                                             </li>
                                             <li class="nav-item dropdown">
-                                                <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Works</a>
+                                                <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Jobs</a>
                                                 <div class="dropdown-menu pages-dropdown">
-                                                    <a class="link-item" href="{{ path('projets') }}">Browse works</a>
+                                                    <a class="link-item" href="browse_jobs.html">Browse Jobs</a>
                                                     
                                                 </div>
                                             </li>
@@ -344,7 +344,6 @@
             <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>
             <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}" ></script>
             <script src="{{ asset('vendor/semantic/semantic.min.js') }}" ></script>
-            <script src="{{ asset('js/jquery.range-min.js') }}" ></script>
             <script src="{{ asset('js/custom1.js') }}" ></script>
         {% endblock %}
 

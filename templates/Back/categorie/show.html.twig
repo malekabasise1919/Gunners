@@ -1,0 +1,110 @@
+{% extends 'Back/backk.html.twig' %}
+{% block title %}categorie index{% endblock %}
+
+{% block content %}
+
+    <!-- Header End -->
+    <div class="title-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="title-bar-text">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Categorie index</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Title Start -->
+
+    <!-- Body Start -->
+    <main class="browse-section">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-9">
+                    <div class="main-heading">
+                        <h2>Categorie</h2>
+                        <div class="line-shape1">
+                            <img src="images/line.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="statement_table checkout_dt">
+                        <div class="statement_body">
+                            <div class="table-responsive-md">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">NOM</th>
+
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for categorie in categories %}
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="user_dt_trans">
+                                                <p>{{ categorie.id }}</p>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div class="user_dt_trans">
+                                                <p>{{ categorie.nom }}</p>
+                                            </div>
+                                        </td>
+
+
+
+                                            <td>
+                                                <div class="righttfooter" >
+                                                    <a class="print_btn" href="{{ path('categorie', {'id': categorie.id}) }}">modifier</a>
+
+                                                </div>
+                                            </td>
+
+
+
+
+                                            <td>
+
+                                                <div class="righttfooter" >
+                                                    {{ include('categorie/_delete_form.html.twig') }}
+
+                                                </div>
+                                            </td>
+
+                                        </tr>
+
+
+                                        {% endfor %}
+
+
+
+
+                                    </tbody>
+                                </table>
+
+                                <div class="righttfooter" >
+                                    <a class="print_btn" href="{{ path('categorie_new') }}">ajouter</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    <!-- Body End -->
+
+
+
+
+
+
+{% endblock %}

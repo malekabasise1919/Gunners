@@ -1,0 +1,130 @@
+
+{% extends 'Back/backk.html.twig' %}
+
+{% block title %}Contrat index{% endblock %}
+
+{% block content %}
+
+    <!-- Header End -->
+    <div class="title-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="title-bar-text">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contrat index</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Title Start -->
+
+    <!-- Body Start -->
+    <main class="browse-section">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-9">
+                    <div class="main-heading">
+                        <h2>CONTRAT</h2>
+                        <div class="line-shape1">
+                            <img src="images/line.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="statement_table checkout_dt">
+                        <div class="statement_body">
+                            <div class="table-responsive-md">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Id client</th>
+                                        <th scope="col">id freelancer</th>
+                                        <th scope="col">Prix</th>
+                                        <th scope="col">Statut</th>
+                                        <th scope="col">date</th>
+                                        <th scope="col">actions</th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for contrat in contrats %}
+                                        <tr>
+                                            <th scope="row">
+                                                <div class="user_dt_trans">
+                                                    <p>{{ contrat.id }}</p>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ contrat.user_client_id }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ contrat.user_freelancer_id }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ contrat.prix }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ contrat.statut }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ contrat.created_at ? contrat.created_at|date('Y-m-d H:i:s') : '' }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="righttfooter" >
+                                                    <a class="print_btn" href="{{ path('facture_index', {'id': contrat.id}) }}">facture</a>
+
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <div class="righttfooter" >
+                                                    <a class="print_btn" href="{{ path('contratm', {'id': contrat.id}) }}">modifier</a>
+
+                                                </div>
+                                            </td>
+
+
+
+
+                                            <td>
+
+                                                <div class="righttfooter" >
+                                                    {{ include('contrat/_delete_form.html.twig') }}
+
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    <!-- Body End -->
+
+
+
+
+
+
+{% endblock %}

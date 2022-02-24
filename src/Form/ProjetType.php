@@ -6,8 +6,6 @@ use App\Entity\Competence;
 use App\Entity\Projet;
 use Symfony\Component\Form\AbstractType;
 
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\SearchSkillsType;
@@ -24,9 +22,6 @@ class ProjetType extends AbstractType
             ->add('description', TextType::class)
             ->add('min_salaire')
             ->add('max_salaire')
-            ->add('fichiers' ,CollectionType::class, array(
-              'entry_type' => FileType::class))
-
             ->add('competences' , EntityType::class ,[
                 'class' => Competence::class ,
                 'query_builder' =>function (EntityRepository $er){

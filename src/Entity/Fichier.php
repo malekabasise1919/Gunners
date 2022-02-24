@@ -28,22 +28,17 @@ class Fichier
      */
     private $projet;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLink()
+    public function getLink(): ?string
     {
         return $this->link;
     }
 
-    public function setLink($link): self
+    public function setLink(string $link): self
     {
         $this->link = $link;
 
@@ -58,18 +53,6 @@ class Fichier
     public function setProjet(?projet $projet): self
     {
         $this->projet = $projet;
-
-        return $this;
-    }
-
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
 
         return $this;
     }

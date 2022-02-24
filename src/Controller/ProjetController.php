@@ -2,12 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Fichier;
 use App\Entity\Projet;
-use App\Entity\Proposition;
 use App\Form\ProjetType;
 use App\Entity\Competence;
-use App\Form\PropositionType;
 use App\Repository\ProjetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Id;
@@ -17,7 +14,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @Route("/projet")
@@ -31,18 +27,14 @@ class ProjetController extends AbstractController
     }
 
     /**
-     * @Route("/", name="projets")
+     * @Route("/", name="projet_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(ProjetRepository $projetRepository): Response
     {
-        $projects = $this->getDoctrine()->getRepository(Projet::class)->findBy([],['id' => 'DESC']);
         return $this->render('projet/index.html.twig', [
-            'projects' => $projects,
+            'projets' => $projetRepository->findAll(),
         ]);
     }
-
-
-
 
     /**
      * @Route("/new", name="projet_new")
@@ -50,7 +42,7 @@ class ProjetController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager)
     {   
 
-
+        $id=1;
         $user = $this->security->getUser();
         $skills=$this->getDoctrine()->getRepository(Competence::class)->findAll();
         
@@ -58,7 +50,6 @@ class ProjetController extends AbstractController
         $projet = new Projet();
         $form = $this->createForm(ProjetType::class, $projet);
         $form->handleRequest($request);
-
         
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -70,13 +61,8 @@ class ProjetController extends AbstractController
             $projet->setStatut('pending');
             $projet->setUser($user);
             //$competence->addProjet($projet);
-
-
-
-
             $entityManager->persist($projet);
             $entityManager->flush();
-
 
             return $this->redirectToRoute('home');
         }
@@ -89,37 +75,45 @@ class ProjetController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project")
+     * @Route("/{id}", name="projet_show", methods={"GET"})
      */
-    public function project($id,Request $request,EntityManagerInterface $entityManager)
+    public function show(Projet $projet): Response
     {
-        $user = $this->security->getUser();
-        $project = $this->getDoctrine()->getRepository(Projet::class)->find($id);
+        return $this->render('projet/show.html.twig', [
+            'projet' => $projet,
+        ]);
+    }
 
-        $verifProp = $this->getDoctrine()->getRepository(Proposition::class)->findOneBy(['user' => $user,
-            'projet' =>  $project]);
-        $proposition=new Proposition();
-        $form = $this->createForm(PropositionType::class, $proposition);
+    /**
+     * @Route("/{id}/edit", name="projet_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ProjetType::class, $projet);
         $form->handleRequest($request);
 
-
-
-        if ($form->isSubmitted() ) {
-            $proposition->setUser($user);
-            $proposition->setProjet($project);
-            $proposition->setCreatedAt();
-            $entityManager->persist($proposition);
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('project', ['id'=>$id], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('projet_index', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('projet/viewProject.html.twig', [
-            'verifProp'=>$verifProp,
-            'project' => $project,
 
+        return $this->render('projet/edit.html.twig', [
+            'projet' => $projet,
             'form' => $form->createView(),
         ]);
     }
 
+    /**
+     * @Route("/{id}", name="projet_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Projet $projet, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($projet);
+            $entityManager->flush();
+        }
 
+        return $this->redirectToRoute('projet_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

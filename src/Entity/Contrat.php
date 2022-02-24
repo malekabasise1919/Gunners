@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ContratRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ContratRepository::class)
@@ -18,17 +20,27 @@ class Contrat
     private $id;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", precision=10, scale=0)
+     * * @Assert\NotEqualTo(
+     *     value = 0,
+     *     message = "Le prix d’un article ne doit pas être égal à  0 "
+     * )
      */
     private $prix;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime_immutable")
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Le nom d'un article doit comporter au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     * )
      */
     private $statut;
 
@@ -38,22 +50,16 @@ class Contrat
     private $facture;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="contrats")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="contrats")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user_client;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class)
+     * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $user_freelancer;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Projet::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $projet;
 
     public function getId(): ?int
     {
@@ -77,9 +83,9 @@ class Contrat
         return $this->created_at;
     }
 
-    public function setCreatedAt(): self
+    public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->created_at = new \Datetime;
+        $this->created_at = $created_at;
 
         return $this;
     }
@@ -133,18 +139,6 @@ class Contrat
     public function setUserFreelancer(?user $user_freelancer): self
     {
         $this->user_freelancer = $user_freelancer;
-
-        return $this;
-    }
-
-    public function getProjet(): ?Projet
-    {
-        return $this->projet;
-    }
-
-    public function setProjet(Projet $projet): self
-    {
-        $this->projet = $projet;
 
         return $this;
     }
