@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block content%}
+<main class="browse-section">				
+			<div class="container">
+				<div class="row justify-content-md-center">					
+					<div class="col-md-6">
+						<div class="lg_form">
+							<div class="main-heading">
+								<h2>Lanci Tounsi</h2>
+								<div class="line-shape1">
+									<img src="images/line.svg" alt="">
+								</div>
+							</div>
+                            {{ form_start(form)}}
+							<div class="form-group">
+								<label class="label15">Please enter the code received in your email</label>
+                                 {{ form_widget(form.code,{'attr':{ 'placeholder': 'This code contains 4 numbers' ,'class': 'job-input' }})}}
+                               {% if error %}
+								<div style="color:red">False code</div>
+                                {% endif %}
+							</div>
+							
+							
+				
+							<button type="submit" class="lr_btn">OK</button>
+							 {{ form_end(form)}}
+						
+						</div>						
+					</div>																																										
+				</div>				
+			</div>					
+		</main>
+{% endblock %}

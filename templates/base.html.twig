@@ -149,14 +149,14 @@
                                             <li>
                                                 <div class="account order-1 dropdown">
                                                     <a href="#" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                                                        <div class="user-dp"><img src="{{ asset('images/dp.jpg') }}" alt=""></div>
+                                                        <div class="user-dp"><img src="{{ asset ('uploads/') ~ app.user.photo}}" alt=""></div>
                                                         <span>Hi! {{app.user.nom}}</span>
                                                         <i class="fas fa-sort-down"></i>
                                                     </a>
                                                     <div class="dropdown-menu account-dropdown dropdown-menu-right">
                                                         <a class="link-item" href="{{ path('offre')}}">Buy Bids</a>
                                                         <a class="link-item" href="{{ path('transactions')}}">My Transations</a>
-                                                        <a class="link-item" href="my_freelancer_messages.html">My Messages</a>
+                                                        <a class="link-item" href="{{ path('user_index')}}">My Profil</a>
                                                         <a class="link-item" href="my_freelancer_jobs.html">My Jobs</a>
                                                         <a class="link-item" href="my_freelancer_bids.html">My Bids</a>
                                                         <a class="link-item" href="my_freelancer_portfolio.html">My Portfolio</a>
