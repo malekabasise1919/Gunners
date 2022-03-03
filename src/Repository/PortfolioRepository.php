@@ -20,7 +20,7 @@ class PortfolioRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Portfolio[] Returns an array of Portfolio objects
+    //  * @return PortfolioController[] Returns an array of PortfolioController objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class PortfolioRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Portfolio
+    public function findOneBySomeField($value): ?PortfolioController
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

@@ -28,6 +28,12 @@ class Review
      */
     private $user;
 
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $commentaire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +59,22 @@ class Review
     public function setUser(?user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+
+
+
+
+    public function getCommentaire(): ?string
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(string $commentaire): self
+    {
+        $this->commentaire = $commentaire;
 
         return $this;
     }
