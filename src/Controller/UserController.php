@@ -22,7 +22,52 @@ class UserController extends AbstractController
        $this->security = $security;
     }
 
-   
+    /**
+     * @Route("/freelancer", name="freelancers", methods={"GET"})
+     */
+    public function freelancers(UserRepository $userRepository): Response
+    {
+        $user = $this->security->getUser(); // null or UserInterface, if logged in
+        // ... do whatever you want with $user
+        $nom=$user->getNom();
+        return $this->render('user/freelancers.html.twig', [
+            'users' => $userRepository->findAll(),
+            'user' =>$nom
+        ]);
+    } 
+
+    /**
+     * @Route("/{id}/freelancer", name="freelancers_profile", methods={"GET"})
+     */
+    public function freelancerProfile(UserRepository $userRepository,$id): Response
+    {
+        
+        $user = $userRepository->findOneById($id);
+        $portfolios=$user->getPortfolio();
+        return $this->render('user/freelancersProfile.html.twig', [
+            'user' => $userRepository->findOneById($id),
+            'portfolios'=>$portfolios
+
+            
+        ]);
+    }
+    
+    /**
+     * @Route("/{id}/reviews", name="freelancers_reviews", methods={"GET"})
+     */
+    public function freelancerReview(UserRepository $userRepository,$id): Response
+    {
+        
+        $user = $userRepository->findOneById($id);
+        $reviews=$user->getReviews();
+        return $this->render('user/freelancersReviews.html.twig', [
+            'user' => $userRepository->findOneById($id),
+            'reviews'=>$reviews
+
+            
+        ]);
+    } 
+
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */

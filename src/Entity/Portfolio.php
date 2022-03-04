@@ -27,6 +27,11 @@ class Portfolio
      */
     private $title;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="portfolio")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Portfolio
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

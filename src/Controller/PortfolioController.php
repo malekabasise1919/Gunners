@@ -46,6 +46,8 @@ class PortfolioController extends AbstractController
                     $destination,
                     $newFilename
                 );
+                $user=$this->getUser();
+                $portfolio->setUser($user);
                 $portfolio->setImage($newFilename);
                 $em=$this->getDoctrine()->getManager();
                 $em->persist($portfolio);
@@ -65,7 +67,8 @@ class PortfolioController extends AbstractController
      */
     public function list(){
         $repository=$this->getDoctrine()->getRepository(Portfolio::class);
-        $portfolio=$repository->findAll();
+        $user=$this->getUser();
+        $portfolio=$user->getPortfolio();
         return $this->render('portfolio/index.html.twig',array(
             'portfolio'=>$portfolio
         ));

@@ -129,6 +129,11 @@ class User implements UserInterface
      */
     private $bids;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Portfolio::class, mappedBy="user")
+     */
+    private $portfolio;
+
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
@@ -138,6 +143,7 @@ class User implements UserInterface
         $this->competences = new ArrayCollection();
         $this->contrats = new ArrayCollection();
         $this->reviews = new ArrayCollection();
+        $this->portfolio = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -495,6 +501,36 @@ class User implements UserInterface
     public function setBids(?int $bids): self
     {
         $this->bids = $bids;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Portfolio>
+     */
+    public function getPortfolio(): Collection
+    {
+        return $this->portfolio;
+    }
+
+    public function addPortfolio(Portfolio $portfolio): self
+    {
+        if (!$this->portfolio->contains($portfolio)) {
+            $this->portfolio[] = $portfolio;
+            $portfolio->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePortfolio(Portfolio $portfolio): self
+    {
+        if ($this->portfolio->removeElement($portfolio)) {
+            // set the owning side to null (unless already changed)
+            if ($portfolio->getUser() === $this) {
+                $portfolio->setUser(null);
+            }
+        }
 
         return $this;
     }
