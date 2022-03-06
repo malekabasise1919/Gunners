@@ -143,13 +143,11 @@
 														<div class="candi_dt">
 															<a href="#">{{ review.user.nom}} {{ review.user.prenom}}</a>
 															<div class="candi_cate">UX Designer</div>
-															<div class="rating_candi">{{review.note}}
+															<div class="rating_candi">
 																<div class="star">
-																	<i class="fas fa-star"></i>
-																	<i class="fas fa-star"></i>
-																	<i class="fas fa-star"></i>
-																	<i class="fas fa-star"></i>
-																	<i class="fas fa-star"></i>
+																	{% for i in 1..review.note %}
+																		<i class="fas fa-star"></i>
+																	{% endfor %}
 																	<span>{{ review.note }}</span>
 																</div>
 															</div>
