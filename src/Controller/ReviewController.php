@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Review;
 use App\Form\ReviewType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,19 +39,33 @@ class ReviewController extends AbstractController
     }
 
     /**
-     * @Route("/add_review", name="add_review")
+     * @Route("/myreview", name="myreview")
      */
-    public function addReview(Request $request, \Swift_Mailer $mailer): Response
+    public function myReview(): Response
+    {
+        $user = $this->security->getUser();
+        $reviews=$this->getDoctrine()->getRepository(Review::class)->findBy(['user'=>$user]);
+
+        return $this->render('review/myreviews.html.twig', [
+            'reviews' => $user->getReviews(),
+            'user' =>$user
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/add_review", name="add_review")
+     */
+    public function addReview(Request $request, \Swift_Mailer $mailer,$id,UserRepository  $userRepository ): Response
     {
         $review = new Review();
         $user = $this->security->getUser();
-
+        $userRev=$userRepository->findOneById($id);
         $form = $this->createForm(ReviewType::class, $review);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $review->setUser($user);
+            $review->setUser($userRev);
 
         $message = (new \Swift_Message('Hello Email'))
         ->setFrom('syrine.benslim@esprit.tn')

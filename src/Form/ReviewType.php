@@ -4,17 +4,25 @@ namespace App\Form;
 
 use App\Entity\Review;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 class ReviewType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('note')
-            ->add('commentaire')
+            ->add('note',IntegerType::class,[
+                'attr' => ['class' => 'form-control' , 'placeholder' => 'Note',
+                ]
+            ])
+            ->add('commentaire',TextType::class,[
+                'attr' => ['class' => 'form-control' , 'placeholder' => 'Commentaire',
+                ]
+            ])
             ->add('save',SubmitType::class,[
 
                 "attr"=>[

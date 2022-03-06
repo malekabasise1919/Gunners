@@ -19,7 +19,7 @@ class UserController extends AbstractController
 {
     public function __construct(Security $security)
     {
-       $this->security = $security;
+        $this->security = $security;
     }
 
     /**
@@ -34,39 +34,54 @@ class UserController extends AbstractController
             'users' => $userRepository->findAll(),
             'user' =>$nom
         ]);
-    } 
+    }
 
     /**
-     * @Route("/{id}/freelancer", name="freelancers_profile", methods={"GET"})
+     * @Route("/{id}/freelancer/profile", name="freelancer_profile", methods={"GET"})
      */
     public function freelancerProfile(UserRepository $userRepository,$id): Response
     {
-        
+
         $user = $userRepository->findOneById($id);
         $portfolios=$user->getPortfolio();
         return $this->render('user/freelancersProfile.html.twig', [
             'user' => $userRepository->findOneById($id),
             'portfolios'=>$portfolios
 
-            
+
         ]);
     }
-    
+    /**
+     * @Route("/{id}/freelancer", name="freelancers_portfolio", methods={"GET"})
+     */
+    public function freelancerPortfolio(UserRepository $userRepository,$id): Response
+    {
+
+        $user = $userRepository->findOneById($id);
+        $portfolios=$user->getPortfolio();
+        return $this->render('user/freelancersPortfolio.html.twig', [
+            'user' => $userRepository->findOneById($id),
+            'portfolios'=>$portfolios
+
+
+        ]);
+    }
+
     /**
      * @Route("/{id}/reviews", name="freelancers_reviews", methods={"GET"})
      */
     public function freelancerReview(UserRepository $userRepository,$id): Response
     {
-        
+
         $user = $userRepository->findOneById($id);
         $reviews=$user->getReviews();
         return $this->render('user/freelancersReviews.html.twig', [
             'user' => $userRepository->findOneById($id),
             'reviews'=>$reviews
 
-            
+
         ]);
-    } 
+    }
 
     /**
      * @Route("/", name="user_index", methods={"GET"})
