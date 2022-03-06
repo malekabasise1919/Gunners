@@ -149,13 +149,13 @@
                                             <li>
                                                 <div class="account order-1 dropdown">
                                                     <a href="#" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                                                        <div class="user-dp"><img alt="" src="{{ asset('Oussema.jpg') }}"></div>
+                                                        <div class="user-dp"><img alt="" src="{{ asset('images/Oussema.jpg') }}"></div>
                                                         <span>Hi! Oussema {{app.user.nom}}</span>
                                                         <i class="fas fa-sort-down"></i>
                                                     </a>
                                                     <div class="dropdown-menu account-dropdown dropdown-menu-right">
                                                         <a class="link-item" href="my_freelancer_dashboard.html">Dashboard</a>
-                                                        <a class="link-item" href="my_freelancer_setting.html">Setting</a>
+                                                        <a class="link-item" href="{{ path('projet_index')}}">Setting</a>
                                                         <a class="link-item" href="my_freelancer_messages.html">My Messages</a>
                                                         <a class="link-item" href="my_freelancer_jobs.html">My Jobs</a>
                                                         <a class="link-item" href="my_freelancer_bids.html">My Bids</a>
@@ -188,6 +188,8 @@
                                             <li class="nav-item active">
                                                 <a class="nav-link" href="{{path('home')}}">Home <span class="sr-only">(current)</span></a>
                                             </li>
+
+
                                             <li class="nav-item dropdown">
                                                 <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Jobs</a>
                                                 <div class="dropdown-menu pages-dropdown">
@@ -200,9 +202,15 @@
                                             <li class="nav-item dropdown">
                                                 <a href="#" class="nav-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">Find Freelancers</a>
                                                 <div class="dropdown-menu pages-dropdown">
-                                                    <a class="link-item" href="browse_freelancers.html">Browse Freelancers</a>
+                                                    <a class="link-item" href="{{ path('projet_new')}}">Browse Freelancers</a>
                                                     <a class="link-item" href="other_freelancer_profile.html">Freelancer Profile</a>
                                                 </div>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link" href="{{ path('map')}}">Location <span class="sr-only">(current)</span></a>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link" href="{{ path('about')}}">About <span class="sr-only">(current)</span></a>
                                             </li>
                                            
                                         </ul>
@@ -273,12 +281,12 @@
                             <div class="footer-links">
                                 <h4>About</h4>
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href={{path('about')}}>About Us</a></li>
                                     <li><a href="sign_in.html">Login</a></li>
                                     <li><a href="my_freelancer_profile.html">My Account</a></li>
                                     <li><a href="contact_us.html">Contact</a></li>
                                     <li><a href="privacy_policy.html">Privacy Policy</a></li>
-                                    <li><a href="Terms.html">Terms of Use</a></li>
+                                    <li><a href={{path('streetview')}}>Street View</a></li>
                                 </ul>
                             </div>
                         </div>

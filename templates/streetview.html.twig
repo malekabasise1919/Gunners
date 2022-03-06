@@ -1,0 +1,34 @@
+{% block title %}
+<meta charset="utf-8">
+<title>Siège</title>
+<style>
+    html, body{
+        height:100%;
+        margin:0;
+        padding:0;
+    }
+    #street-view {
+        height: 100%;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div id="street-view"></div>
+<script>
+    var panorama;
+    function initialize(){
+        panorama= new google.maps.StreetViewPanorama(
+            document.getElementById('street-view'),
+            {
+                position: {lat: 36.800399, lng: 10.186619500000006},
+                pov: {heading: 165, pitch: 0},
+                zoom:1
+            }
+        );
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTdxaUb10x75S1mZehuzEAjEu5rzTFxCo&callback=initialize">
+</script>
+{% endblock %}
+

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,12 +20,14 @@ class Reclamation
 
     /**
      * @ORM\OneToOne(targetEntity=Projet::class, inversedBy="reclamation", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $projet;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Cant be empty")
+     * @Assert\Length(min="12", minMessage="La description doit contenir au minimum 12 caractères")
      */
     private $description;
 
@@ -32,6 +35,11 @@ class Reclamation
      * @ORM\Column(type="datetime")
      */
     private $date_de_reclamation;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $statut;
 
     public function getId(): ?int
     {
@@ -70,6 +78,18 @@ class Reclamation
     public function setDateDeReclamation(): self
     {
         $this->date_de_reclamation = new \Datetime();
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

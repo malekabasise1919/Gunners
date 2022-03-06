@@ -3,7 +3,7 @@
 {% block title %}Nouvelle Reclamation{% endblock %}
 
 {% block content %}
-    <h1>Réclamation</h1>
+    <h1>Nouvelle réclamation</h1>
 
     <main class="browse-section">
         <div class="container">
@@ -18,11 +18,12 @@
                                 <label class="label15">Description*</label>
                                 {{ form_widget(form.description,{'attr':{ 'placeholder': 'Description of Project Here' ,'class': 'textarea_input' }})}}
                             </div>
+                            <div style="color: red">{{ form_errors(form.description) }}</div>
                         </div>
 
 
                         <div class="col-lg-12">
-                            <button class="post_jp_btn" type="submit">Réclamer</button>
+                            <button class="post_jp_btn" type="submit" formnovalidate>Réclamer</button>
                         </div>
                     </div>
                     {{ form_end(form)}}

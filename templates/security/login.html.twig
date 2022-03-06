@@ -7,7 +7,7 @@
 					<div class="col-md-6">
 						<div class="lg_form">
 							<div class="main-heading">
-								<h2>Sign in to Jobby</h2>
+								<h2>Sign in to Lanci Tounsi</h2>
 								<div class="line-shape1">
 
 								</div>
@@ -16,10 +16,10 @@
                             <form action="{{ path('login') }}" method='post'>
 							<div class="form-group">
 								<label class="label15">Email Address*</label>
-								<input type="email" name="_username"class="job-input" placeholder="Enter Email Address">
+								<input type="email" name="_username"class="job-input" placeholder="Enter Email Address" required>
 							</div>
 							<div class="form-group">
-								<label class="label15">Password*</label>
+								<label class="label15" required min="8">Password*</label>
 								<input  name="_password" type="password" class="job-input" placeholder="Enter Password">
 							</div>
 							<button class="lr_btn" type="submit">Sign in Now</button>

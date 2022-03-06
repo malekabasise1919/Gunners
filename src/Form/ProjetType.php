@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Competence;
+//use App\Entity\Competence;
 use App\Entity\Projet;
 use Symfony\Component\Form\AbstractType;
 
@@ -22,7 +22,7 @@ class ProjetType extends AbstractType
             ->add('description', TextType::class)
             ->add('min_salaire')
             ->add('max_salaire')
-            ->add('competences' , EntityType::class ,[
+         /*  ->add('competences' , EntityType::class ,[
                 'class' => Competence::class ,
                 'query_builder' =>function (EntityRepository $er){
                     $query = $er->createQueryBuilder('c');
@@ -35,7 +35,7 @@ class ProjetType extends AbstractType
                 'mapped' =>false ,
                 
             
-            ]);
+            ]);*/
             
             
         ;
@@ -47,4 +47,17 @@ class ProjetType extends AbstractType
             'data_class' => Projet::class,
         ]);
     }
+
+   /* public function search_project()
+    {
+        $form=$this->CreateFormBuilder(null)
+            ->add('projet', TextType::class)
+            ->add('search', SubmitType::class, [
+                'attr'=> [
+                    'class'=>'btn btn-primary'
+                ]
+            ])
+            ->getForm();
+
+    }*/
 }

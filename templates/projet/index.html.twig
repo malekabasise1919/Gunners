@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Projet index{% endblock %}
+{% block title %}La liste des projets{% endblock %}
 
 {% block content %}
     <h1>Projet index</h1>
@@ -27,7 +27,7 @@
                 <td>{{ projet.maxSalaire }}</td>
                 <td>{{ projet.statut }}</td>
                 <td>
-                    <a href="{{ path('projet_show', {'id': projet.id}) }}">show</a>
+                    <a href="{{ path('projet_delete', {'id': projet.id}) }}">delete</a>
                     <a href="{{ path('projet_edit', {'id': projet.id}) }}">edit</a>
                 </td>
             </tr>

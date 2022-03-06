@@ -1,0 +1,120 @@
+{% extends 'Back/back.html.twig' %}
+{% block title %}La liste des réclamations{% endblock %}
+
+{% block content %}
+<h1>La liste des réclamations</h1>
+    <!-- Header End -->
+    <div class="title-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ol class="title-bar-text">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Les réclamations</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Title Start -->
+
+    <!-- Body Start -->
+    <main class="browse-section">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-9">
+                    <div class="main-heading">
+                        <div class="line-shape1">
+                            <img src="images/line.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="statement_table checkout_dt">
+                        <div class="statement_body">
+                            <div class="table-responsive-md">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th>Nom du projet</th>
+
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Statut</th>
+<th>Actions  </th>
+
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in reclamations %}
+                                        <tr>
+                                            <th scope="row">
+                                                <div class="user_dt_trans">
+                                                    <p>{{ item.id }}</p>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ item.projet.nom }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ item.description }}</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="user_dt_trans">
+                                                    <p>{{ item.statut }}</p>
+                                                </div>
+                                            </td>
+
+
+
+                                            <td>
+                                                <div class="righttfooter" >
+                                                    <a class="add-post" href="{{ path('reclamation_edit_back', {'id': item.id}) }}">modifier</a>
+
+                                                </div>
+                                            </td>
+
+
+
+
+                                            <td>
+
+                                                <form
+                                                        {% if app.user %}
+                                                        method="post" action="{{ path('reclamation_delete_back', {'id': item.id}) }}" onsubmit="return confirm('Are you sure you want to delete this claim?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ item.id) }}">
+                                                    <button class="add-post">Supprimer</button>
+                                                    {% endif %}
+                                                </form>
+
+                                            </td>
+
+                                        </tr>
+
+
+                                    {% endfor %}
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    <!-- Body End -->
+
+
+
+
+{% endblock %}

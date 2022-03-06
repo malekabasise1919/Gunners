@@ -1,6 +1,5 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Edit Project{% endblock %}
+{% extends 'Back/back.html.twig' %}
+{% block title %}Modifier un projet{% endblock %}
 
 {% block content %}
     <h1>Modifier ce projet</h1>
@@ -60,6 +59,8 @@
                                 {{ form_widget(form.description,{'attr':{ 'placeholder': 'Description of Project Here' ,'class': 'textarea_input' }})}}
                             </div>
                             <div style="color: red">{{ form_errors(form.description) }}</div>
+                            <h5> <strong>Statut*</strong></h5>
+                            {{ form_widget(form.statut,{'attr':{ 'placeholder': 'Modifier le statut' ,'class': 'job_input' }})}}
                         </div>
                         <div class="col-lg-12">
                             <button class="post_jp_btn" type="submit" formnovalidate>Modifier</button>

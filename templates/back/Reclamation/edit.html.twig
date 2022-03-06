@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Back/back.html.twig' %}
 
 {% block title %}Modifier une réclamation{% endblock %}
 
@@ -15,13 +15,14 @@
                         <div class="col-lg-12">
 
                             <div class="form-group">
-                                <label class="label15">Description*</label>
+                                <h4> <strong>Description*</strong></h4>
                                 {{ form_widget(form.description,{'attr':{ 'placeholder': 'Description of Project Here' ,'class': 'textarea_input' }})}}
-                            </div>
+
                             <div style="color: red">{{ form_errors(form.description) }}</div>
+                                <h5> <strong>Statut*</strong></h5>
+                        {{ form_widget(form.statut,{'attr':{ 'placeholder': 'Modifier le statut' ,'class': 'job_input' }})}}
                         </div>
-
-
+                        </div>
                         <div class="col-lg-12">
                             <button class="add-post" type="submit" formnovalidate>Modifier</button>
                         </div>

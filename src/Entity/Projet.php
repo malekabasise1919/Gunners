@@ -28,8 +28,8 @@ class Projet
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="The Project Name cannot be empty")
-     * @Assert\Length(min="20", minMessage="The description must contain 20 caractere as minimum")
+     * @Assert\NotBlank (message="Cant be empty")
+     * @Assert\Length(min="12", minMessage="La description doit contenir au minimum 12 caractères")
      */
     private $description;
 
@@ -61,11 +61,11 @@ class Projet
      */
     private $propositions;
 
-    /**
+   /* /**
      * @ORM\ManyToMany(targetEntity=Competence::class, mappedBy="projet")
-     */
+     *//*
     private $competences;
-
+*/
     /**
      * @ORM\OneToOne(targetEntity=Reclamation::class, mappedBy="projet", cascade={"persist", "remove"})
      */
@@ -79,7 +79,7 @@ class Projet
     public function __construct()
     {
         $this->propositions = new ArrayCollection();
-        $this->competences = new ArrayCollection();
+       // $this->competences = new ArrayCollection();
         $this->fichiers = new ArrayCollection();
     }
 
@@ -144,7 +144,6 @@ class Projet
     public function setStatut(string $statut): self
     {
         $this->statut = $statut;
-
         return $this;
     }
 
@@ -190,10 +189,10 @@ class Projet
         return $this;
     }
 
-    /**
+    /*/**
      * @return Collection|Competence[]
      */
-    public function getCompetences(): Collection
+   /* public function getCompetences(): Collection
     {
         return $this->competences;
     }
@@ -216,7 +215,7 @@ class Projet
 
         return $this;
     }
-
+*/
     public function getReclamation(): ?Reclamation
     {
         return $this->reclamation;

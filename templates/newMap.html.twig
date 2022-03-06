@@ -1,0 +1,70 @@
+{% block title %}
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Location</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        </style>
+{% endblock %}
+{% block content %}
+       <div id="map"></div>
+       <script>
+           function initMap() {
+               var myLatLng = { lat: 36.899777, lng: 10.1899728 };
+               var SousseLatLng = { lat: 35.8288175, lng: 10.6405392 };
+               var SfaxLatLng = { lat: 34.723126, lng: 10.3358171 };
+               var MonastirLatLng = { lat: 35.6054798, lng: 10.7876948 };
+               var MahdiaLatLng = { lat: 35.3409383, lng: 10.6041957 };
+
+               var map = new google.maps.Map(
+                   document.getElementById("map") ,
+                   {
+                       zoom: 6,
+                       center: myLatLng,
+                   }
+           );
+
+              var marker= new google.maps.Marker({
+                   position: myLatLng,
+                   map: map,
+                   title: "Tunis",
+               });
+               var marker= new google.maps.Marker({
+                   position: SousseLatLng,
+                   map: map,
+                   title: "Sousse",
+               });
+               var marker= new google.maps.Marker({
+                   position: SfaxLatLng,
+                   map: map,
+                   title: "Sfax",
+               });
+               var marker= new google.maps.Marker({
+                   position: MonastirLatLng,
+                   map: map,
+                   title: "Monastir",
+               });
+               var marker= new google.maps.Marker({
+                   position: MahdiaLatLng,
+                   map: map,
+                   title: "Mahdia",
+               });
+           }
+       </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTdxaUb10x75S1mZehuzEAjEu5rzTFxCo&callback=initMap&v=weekly">
+    </script>
+{% endblock %}
+

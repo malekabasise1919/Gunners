@@ -11,6 +11,7 @@
             <th>Id</th>
             <th>Description</th>
             <th>Date de réclamation</th>
+            <th>Statut</th>
             <th>Suppressions et Modifications</th>
         </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ reclamation.id }}</td>
                 <td>{{ reclamation.description }}</td>
                 <td>{{ reclamation.datedereclamation | date}}</td>
+                <td>{{ reclamation.statut }}</td>
                 <td>
                 <div class="col-lg=-3 col-md-3">
                     <div class="search-link">
@@ -32,7 +34,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
