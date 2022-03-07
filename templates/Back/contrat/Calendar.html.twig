@@ -1,0 +1,70 @@
+{% extends 'Back/backk.html.twig' %}
+{% block title %}categorie index{% endblock %}
+
+
+
+
+
+{% block content %}
+    <br>
+    <br>
+
+    <br>
+
+    <div class="card "  >
+        <div class="card-header">
+            <a class="card-title m-auto">Statistiques des categories</a>
+        </div>
+        <div class="card-content height-5">
+            <canvas id="cat" width="400" height="100"></canvas>
+
+        </div>
+
+        <br>
+        <br>
+
+    </div>
+
+    <!--Callendar-->
+    {% if reservations %}
+
+
+        <div id="calendrier">
+        </div>
+        <script>
+            window.onload = () => {
+                let calendarElt = document.querySelector("#calendrier")
+                let calendar = new FullCalendar.Calendar(calendarElt, {
+                    initialView: 'timeGridWeek',
+                    locale: 'fr',
+                    timeZone: 'Europe/Paris',
+                    headerToolbar: {
+                        start: 'prev,next today',
+                        center: 'title',
+                        end: 'dayGridMonth,timeGridWeek'
+                    },
+                    events: {{ data|raw }},
+                    editable: true,
+                    eventResizableFromStart: true
+                })
+                calendar.on('eventChange', (e) => {
+                    let url = /reservable/api/${e.event.id}/edit
+                    let donnees = {
+                        "title": e.event.title,
+                        "start": e.event.start,
+                        "end": e.event.end,
+                        "allDay": e.event.allDay
+                    }
+
+                    let xhr = new XMLHttpRequest
+                    xhr.open("PUT", url)
+                    xhr.send(JSON.stringify(donnees))
+                })
+                calendar.render()
+            }
+        </script>
+
+        </section>
+        <br>
+    {% endif %}
+{% endblock %}

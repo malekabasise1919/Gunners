@@ -27,12 +27,16 @@
                                     {{ form_label(form.nom,'nom',{'attr':{'class':'label15'}}) }}
                                     {{ form_widget(form.nom,{'attr':{'class':'job-input'}}) }}
 
+
+
                                 </div>
+                                <div style="color: red">{{ form_errors(form.nom) }}</div>
+
                             </div>
 
 
 
-                            <button  type="submit" class="post_jp_btn">Modifier</button>
+                            <button  type="submit" class="post_jp_btn" formnovalidate>Modifier</button>
 
                         </div>
                         {{ form_end(form) }}

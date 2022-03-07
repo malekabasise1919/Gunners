@@ -1,0 +1,61 @@
+{% extends 'Back/backk.html.twig' %}
+{% block title %}categorie index{% endblock %}
+
+
+
+
+
+{% block content %}
+    <br>
+    <br>
+
+    <br>
+
+    <div class="card "  >
+        <div class="card-header">
+            <a class="card-title m-auto">Statistiques des categories</a>
+        </div>
+        <div class="card-content height-5">
+            <canvas id="cat" width="400" height="100"></canvas>
+
+        </div>
+
+        <br>
+        <br>
+
+    </div>
+
+
+{% endblock %}
+{% block pageScripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+<script>
+
+
+    let categories = document.querySelector("#cat")
+    let categGraph = new Chart(categories, {
+        type: "pie",
+        data: {
+            labels: ['marketing','datascience','Développeur'],
+            datasets: [{
+                label: "Répartition des catégories",
+                data:[{{(marketing)}} ,{{(datascience)}},{{(Développeur)}} ],
+    backgroundColor: ['indigo','lightblue','purple']
+    }]
+    }
+    })
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+
+
+
+
+</script>
+{% endblock %}

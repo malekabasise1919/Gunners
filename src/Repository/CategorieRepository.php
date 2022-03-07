@@ -18,7 +18,15 @@ class CategorieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Categorie::class);
     }
+    public function getAllData()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT * from categorie';
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->executeQuery();
 
+        return $result->fetchAllAssociative();
+    }
     // /**
     //  * @return Categorie[] Returns an array of Categorie objects
     //  */

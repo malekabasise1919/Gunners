@@ -101,6 +101,11 @@
                             <div class="righttfooter">
                                 <a class="print_btn" href="javascript:window.print();">Imprimer</a>
                             </div>
+                            {% for facture in facture %}
+                                <td>
+                                    <a href="{{ path('immprimer', {'id': facture.id}) }}">immprimer</a>
+                                </td>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

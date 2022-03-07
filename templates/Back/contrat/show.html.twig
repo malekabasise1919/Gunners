@@ -3,6 +3,14 @@
 
 {% block title %}Contrat index{% endblock %}
 
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+{% endblock %}
 {% block content %}
 
     <!-- Header End -->
@@ -58,12 +66,12 @@
                                             </th>
                                             <td>
                                                 <div class="user_dt_trans">
-                                                    <p>{{ contrat.user_client_id }}</p>
+                                                   <p>{{ contrat.userClient.prenom }}</p>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="user_dt_trans">
-                                                    <p>{{ contrat.user_freelancer_id }}</p>
+     <p>{{ contrat.userFreelancer.nom }}</p>
                                                 </div>
                                             </td>
                                             <td>
@@ -78,7 +86,7 @@
                                             </td>
                                             <td>
                                                 <div class="user_dt_trans">
-                                                    <p>{{ contrat.created_at ? contrat.created_at|date('Y-m-d H:i:s') : '' }}</p>
+         <p>{{ contrat.createdat ? contrat.createdat|date('Y-m-d H:i:s') : '' }}</p>
                                                 </div>
                                             </td>
                                             <td>
@@ -87,6 +95,7 @@
 
                                                 </div>
                                             </td>
+
 
                                             <td>
                                                 <div class="righttfooter" >
@@ -111,6 +120,9 @@
 
                                     </tbody>
                                 </table>
+                                <div class="navigation">
+                                    {{ knp_pagination_render(contrats) }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,12 +131,61 @@
 
 
         </div>
+
     </main>
     <!-- Body End -->
 
+    <!--Callendar-->
+  {% if contrats %}
+
+
+        <div id="calendrier">
+        </div>
+
+        </section>
+        <br>
+
+    {% endif %}
 
 
 
 
+{% endblock %}
+{% block pageScripts %}
 
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+
+    <script>
+        console.log("test");
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'timeGridWeek',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: {{ data|raw }},
+                editable: true,
+                eventResizableFromStart: true
+            })
+            calendar.on('eventChange', (e) => {
+                let url = "/contrat/api/${e.event.id}/edit"
+                let donnees = {
+                    "title": e.event.title,
+                    "start": e.event.start,
+                    "end": e.event.end,
+                    "allDay": e.event.allDay
+                }
+
+                let xhr = new XMLHttpRequest
+                xhr.open("PUT", url)
+                xhr.send(JSON.stringify(donnees))
+            })
+            calendar.render()
+        }
+    </script>
 {% endblock %}
