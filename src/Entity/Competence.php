@@ -25,12 +25,12 @@ class Competence
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity=user::class, inversedBy="competences")
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="competences")
      */
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity=projet::class, inversedBy="competences")
+     * @ORM\ManyToMany(targetEntity=Projet::class, inversedBy="competences")
      */
     private $projet;
 

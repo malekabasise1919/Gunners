@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture index{% endblock %}
+
+{% block content %}
+    <!-- Header Start -->
+    <div class="invc_header">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-8 col-sm-12">
+                    <div class="header102">
+                        <div class="header_logo">
+                            <img src="images/invoice_logo.svg" alt="">
+                        </div>
+                        <div class="invoice_heading">
+                            <h6>Facture d'achat</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <!-- Invoice Body Start -->
+    <section class="invoice_section">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-8">
+                    <div class="invoice_body">
+                        <div class="nvdate_dt">
+                            <div class="nvde_dt45">
+
+                            </div>
+                            <div class="nvde_dt46">
+                                {#
+                                <ul class="in11448">
+                                    {% for facture in facture %}
+                                        <li><div class="vdt-list"><span>Date :</span>{{ facture.created_at|date("m/d/Y") }}</div></li>
+                                        <li><div class="vdt-list"><span>Facture d'achat num :</span>{{ facture.user_client_id }}</div></li>
+                                        <li><div class="vdt-list"><span>numéro de facture :</span>{{ facture.user_freelancer_id }}</div></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            #}
+                        </div>
+                        <h3 class="dff474">Facture d'achat</h3>
+                        <div class="jike145">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="vhls140">
+                                        <h4>code qr</h4>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="invoice_table">
+                                <div class="table-responsive-md">
+                                    <table class="table table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">status</th>
+                                            <th scope="col">prix</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {#
+                                        {% for facture in facture %}
+                                            <tr>
+                                                <th scope="row">
+                                                    <div class="user_dt_trans">
+                                                        <p>{{ facture.statut }}</p>
+                                                    </div>
+                                                </th>
+                                                <td>
+                                                    <div class="user_dt_trans">
+                                                        <p>{{ facture.prix }}</p>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td colspan="3">
+                                                <div class="user_dt_trans jsk1145">
+                                                    <div class="totalinv2">Signature</div>
+                                                    <br></br>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        #}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="invoice_footer">
+                                <div class="leftfooter">
+                                    <p>Merci d'avoir .</p>
+                                </div>
+                                <div class="righttfooter">
+                                    <a class="print_btn" href="javascript:window.print();">Imprimer</a>
+                                </div>
+                                    <td>
+                                        <a href="{{ path('immprimer') }}">immprimer</a>
+                                    </td>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Invoice Body End -->
+
+    <!-- Scroll to Top Button Start -->
+    <button onclick="topFunction()" id="pageup" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    <!-- Scroll to Top Button End -->
+{% endblock %}

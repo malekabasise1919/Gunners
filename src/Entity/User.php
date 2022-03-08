@@ -6,11 +6,18 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *  fields={"email"},
+ *  message="l'email que vous avez indiqué est deja utilisé ! "
+ * )
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -21,11 +28,13 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit contient au minimum 8 caractéres")
      */
     private $password;
 
@@ -65,7 +74,7 @@ class User
     private $code;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
@@ -108,6 +117,33 @@ class User
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user", orphanRemoval=true)
      */
     private $reviews;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password" ,  message="vous n'avez pas tapé le meme mot de passe")
+     */
+    public $confirm_password;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $bids;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $code_postal;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+
 
     public function __construct()
     {
@@ -238,9 +274,9 @@ class User
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = new \Datetime();
 
         return $this;
     }
@@ -460,5 +496,61 @@ class User
 
         return $this;
     }
+    public function eraseCredentials(){}
+    public function getSalt(){}
+    public function getRoles(){
+        return ['Role_User'];
+    }
+    public function getUsername(){}
+
+    public function getBids(): ?int
+    {
+        return $this->bids;
+    }
+
+    public function setBids(?int $bids): self
+    {
+        $this->bids = $bids;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(?int $code_postal): self
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo):self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+
     
 }
